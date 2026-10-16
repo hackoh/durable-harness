@@ -1,0 +1,28 @@
+{
+  "name": "harness-world-process",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The shared core for process harnesses (Claude Code, Codex, OpenCode, Cursor) on harness-world: a native journal in the run's log, a normalized transcript, a process host, a tool bridge, recovery notes and Gateway credentials.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./machine-brand": "./src/machine-brand.ts",
+    "./records": "./src/records.ts",
+    "./reference": "./reference/harness.ts",
+    "./reference/fake-model": "./reference/fake-model.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vercel/oidc": "3.2.0",
+    "@workflow/world": "catalog:",
+    "harness-world": "workspace:*"
+  },
+  "devDependencies": {
+    "@workflow/world-local": "catalog:",
+    "harness-world-hands": "workspace:*",
+    "zod": "4.5.4"
+  }
+}

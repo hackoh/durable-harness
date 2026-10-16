@@ -1,0 +1,1851 @@
+{
+ "messages": [
+  {
+   "type": "command_lifecycle",
+   "command_uuid": "5d36a731-258f-5f47-a696-2bd1b36289d0",
+   "state": "queued",
+   "uuid": "a9f8541c-18fb-4302-848e-67fccf477a4f",
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+  },
+  {
+   "type": "command_lifecycle",
+   "command_uuid": "5d36a731-258f-5f47-a696-2bd1b36289d0",
+   "state": "started",
+   "uuid": "7e371c46-0984-4c3a-a069-c1861fbaa608",
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+  },
+  {
+   "type": "system",
+   "subtype": "init",
+   "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "tools": [
+    "mcp__hands__bash",
+    "mcp__hands__edit_file",
+    "mcp__hands__list_files",
+    "mcp__hands__read_file",
+    "mcp__hands__unsafe_make_payment",
+    "mcp__hands__unsafe_send_email",
+    "mcp__hands__write_file"
+   ],
+   "mcp_servers": [
+    {
+     "name": "hands",
+     "status": "connected",
+     "source": "sdk"
+    }
+   ],
+   "model": "claude-haiku-4-5",
+   "permissionMode": "dontAsk",
+   "uuid": "f5080e6e-2604-491f-b56f-1f56cd36ef44"
+  },
+  {
+   "type": "system",
+   "subtype": "status",
+   "status": "requesting",
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "uuid": "e8ff974d-615d-4dc0-bd9a-383697199141"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "message_start",
+    "message": {
+     "id": "gen_01M49ESM2GJKZRH2SF2FQ85G8J",
+     "type": "message",
+     "role": "assistant",
+     "content": [],
+     "model": "claude-haiku-4-5",
+     "stop_reason": null,
+     "stop_sequence": null,
+     "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0
+     }
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "6999916e-525d-4079-9af5-1333e44ff307",
+   "ttft_ms": 898,
+   "thinking_display": "updates",
+   "user_message_uuid": "5d36a731-258f-5f47-a696-2bd1b36289d0",
+   "user_message_uuids": [
+    "5d36a731-258f-5f47-a696-2bd1b36289d0"
+   ]
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_start",
+    "index": 0,
+    "content_block": {
+     "type": "thinking",
+     "thinking": ""
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "1ddeaafc-7ce6-4347-9f11-902197b9aa22",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": "The user wants"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "56bf294c-0e0b-46a6-a2f3-70aab82c962d",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " me to:\n1. Write \""
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "5722a6b0-698d-4102-9873-f57f1cd691a0",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": "hello\" to a.txt\n2"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "d949d204-776a-455c-aef0-4a962593402c",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": ". Tell"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "2c02d646-b5a4-4d86-b4f4-e50409428219",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " them in"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "b50040ec-5cfe-4c67-bd3b-0b6a5adeedd6",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " one sentence what I did\n\nI"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "b99b2fa9-c29f-4564-97ff-12f6f14938e4",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": "'ll use"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "774b1d63-267f-440f-9a60-07c323bf7df9",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " the write_file"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "a6ae5180-d40f-44a0-a1b7-6240fc5d9af0",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " tool"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "c530ef9a-7e4c-4dc3-9d2e-91b047e380b4",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " to create/"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "37b8f6f4-2ffe-450e-a38c-6dbeac24aeee",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": "write"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "2f028569-56d7-42c9-83cf-2156b82a5fbd",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " to a.txt with"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "93d40299-8f3d-4c45-a8e1-7b674c5590f8",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " the"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "32e8a29e-6c9e-4752-b3d0-da3138d42001",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " content"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "5068401c-240d-46d9-b13e-81a22198dd8a",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " \"hello\","
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "3a5418aa-03d5-4d99-9446-2ded5612b5fd",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " then provide"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "212ecad8-c8c4-40cd-8828-053135387f08",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " a one-sentence summary."
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "74d8bb8d-b7f5-4108-9c9d-0080631302ef",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "signature_delta",
+     "signature": "EokECtgBCBIYAipAq7OgKJw5AGx1WdrDszcgKKJVMDKXJpCissMbaYBjQkSwFNnPwPIWtYp7YWvm+xFX3LwwN2GRNYNiCVJ+klhlWjIZY2xhdWRlLWhhaWt1LTQtNS0yMDI1MTAwMTgAQgh0aGlua2luZ1okM2I5M2E1ZGQtNzMwMi00ODNmLWFlYWUtMzYyMDc1NTQ4YWUxeh51cHJvZl8wMTFDZlI4YnoyaXE4MUJFZ2ttem5XN0SaARsKGWNsYXVkZS1oYWlrdS00LTUtMjAyNTEwMDGoAdm2ldYGEgxzdPdFIPo5d3UukGoaDFL4YmoFOO3xsLAXyCIwZY4lb0Vz3z5OBPmSe+8geoME6Q3TXBz4zbwpgYksknQENcwphOgHO5T+2hoJbKDZKt0BjQU4Hwe/EAf2GJ7Bns9ngsXXZR1vrSQQb/k01CiRoC20aDbWK1elCeX3O3rOYcTuDUwntpJX4nJhleb5O06vFwVMW6Cnv3Pj+bRxTuzmZtx1xPtbCm7MQXcTtk9JP1j+KazXxu22uGh74yov4T266SeYPasGgOvvudkzI2RBPsXxmGuEAQ7PzSAYjf2GWWZhcRQffhhqb14HpMqJ7CwPLseV13v8uICh3vNuqbmX7RzrorXfgcZv9pkzcE7rRzizvTwGiM4j3KxQUKauduNd7kLsU3ZQ/nTJsX46ojYYAQ=="
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "b9d7fbd7-7734-4599-b9fb-36e11eefd1b2"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": ""
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "7112112e-c01c-4e78-b558-e3c42756be63",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "assistant",
+   "message": {
+    "id": "gen_01M49ESM2GJKZRH2SF2FQ85G8J",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "The user wants me to:\n1. Write \"hello\" to a.txt\n2. Tell them in one sentence what I did\n\nI'll use the write_file tool to create/write to a.txt with the content \"hello\", then provide a one-sentence summary.",
+      "signature": "EokECtgBCBIYAipAq7OgKJw5AGx1WdrDszcgKKJVMDKXJpCissMbaYBjQkSwFNnPwPIWtYp7YWvm+xFX3LwwN2GRNYNiCVJ+klhlWjIZY2xhdWRlLWhhaWt1LTQtNS0yMDI1MTAwMTgAQgh0aGlua2luZ1okM2I5M2E1ZGQtNzMwMi00ODNmLWFlYWUtMzYyMDc1NTQ4YWUxeh51cHJvZl8wMTFDZlI4YnoyaXE4MUJFZ2ttem5XN0SaARsKGWNsYXVkZS1oYWlrdS00LTUtMjAyNTEwMDGoAdm2ldYGEgxzdPdFIPo5d3UukGoaDFL4YmoFOO3xsLAXyCIwZY4lb0Vz3z5OBPmSe+8geoME6Q3TXBz4zbwpgYksknQENcwphOgHO5T+2hoJbKDZKt0BjQU4Hwe/EAf2GJ7Bns9ngsXXZR1vrSQQb/k01CiRoC20aDbWK1elCeX3O3rOYcTuDUwntpJX4nJhleb5O06vFwVMW6Cnv3Pj+bRxTuzmZtx1xPtbCm7MQXcTtk9JP1j+KazXxu22uGh74yov4T266SeYPasGgOvvudkzI2RBPsXxmGuEAQ7PzSAYjf2GWWZhcRQffhhqb14HpMqJ7CwPLseV13v8uICh3vNuqbmX7RzrorXfgcZv9pkzcE7rRzizvTwGiM4j3KxQUKauduNd7kLsU3ZQ/nTJsX46ojYYAQ=="
+     }
+    ],
+    "model": "claude-haiku-4-5",
+    "stop_reason": null,
+    "stop_sequence": null,
+    "usage": {
+     "input_tokens": 0,
+     "output_tokens": 0
+    },
+    "context_management": null
+   },
+   "parent_tool_use_id": null,
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "uuid": "17da8f98-f65d-468e-9748-00fd6dd85ad5",
+   "timestamp": "2026-10-06T20:34:33.578Z",
+   "thinking_duration_ms": 664,
+   "user_message_uuid": "5d36a731-258f-5f47-a696-2bd1b36289d0",
+   "user_message_uuids": [
+    "5d36a731-258f-5f47-a696-2bd1b36289d0"
+   ]
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_stop",
+    "index": 0
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "a1ac741c-2742-4dfd-89f4-71c8dfa55f7b"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_start",
+    "index": 1,
+    "content_block": {
+     "type": "tool_use",
+     "id": "toolu_01JT3uq1hpX9aAK1djPRKs6z",
+     "name": "mcp__hands__write_file",
+     "input": {}
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "4fea8011-da01-4096-b59d-f019e63eca50"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 1,
+    "delta": {
+     "type": "input_json_delta",
+     "partial_json": "{\"path\": \"/workspace"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "4271322c-5c6a-487d-9bd6-a4f5a75cbb4f"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 1,
+    "delta": {
+     "type": "input_json_delta",
+     "partial_json": "/a.txt"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "185049ef-ee2a-4080-bece-b5aa86df3f61"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 1,
+    "delta": {
+     "type": "input_json_delta",
+     "partial_json": "\", \"content\": \"hello"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "7b61ec79-75c2-4ae7-ac47-b36dbf4e69b4"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 1,
+    "delta": {
+     "type": "input_json_delta",
+     "partial_json": "\"}"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "aaaef33d-9c4b-4b50-afbd-4f70568f40f9"
+  },
+  {
+   "type": "assistant",
+   "message": {
+    "id": "gen_01M49ESM2GJKZRH2SF2FQ85G8J",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "tool_use",
+      "id": "toolu_01JT3uq1hpX9aAK1djPRKs6z",
+      "name": "mcp__hands__write_file",
+      "input": {
+       "path": "/workspace/a.txt",
+       "content": "hello"
+      }
+     }
+    ],
+    "model": "claude-haiku-4-5",
+    "stop_reason": null,
+    "stop_sequence": null,
+    "usage": {
+     "input_tokens": 0,
+     "output_tokens": 0
+    },
+    "context_management": null
+   },
+   "parent_tool_use_id": null,
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "uuid": "6c2a16ea-4068-4a17-af44-5ed100ba881e",
+   "timestamp": "2026-10-06T20:34:33.763Z",
+   "tool_use_meta": [
+    {
+     "id": "toolu_01JT3uq1hpX9aAK1djPRKs6z",
+     "display_name": "Write File",
+     "server_display_name": "hands"
+    }
+   ]
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_stop",
+    "index": 1
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "3f6169af-f006-494a-9085-ccf310e23404"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "message_delta",
+    "delta": {
+     "stop_reason": "tool_use",
+     "stop_sequence": null
+    },
+    "usage": {
+     "input_tokens": 10,
+     "output_tokens": 147,
+     "cache_creation_input_tokens": 4809,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 4809,
+      "ephemeral_1h_input_tokens": 0
+     }
+    },
+    "context_management": {
+     "applied_edits": []
+    },
+    "provider_metadata": {
+     "anthropic": {
+      "usage": {
+       "input_tokens": 10,
+       "cache_creation_input_tokens": 4809,
+       "cache_read_input_tokens": 0,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 4809,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "output_tokens": 147,
+       "service_tier": "standard",
+       "inference_geo": "not_available",
+       "output_tokens_details": {
+        "thinking_tokens": 64
+       }
+      },
+      "cacheCreationInputTokens": 4809,
+      "stopSequence": null,
+      "iterations": null,
+      "container": null,
+      "contextManagement": {
+       "appliedEdits": []
+      }
+     },
+     "gateway": {
+      "routing": {
+       "originalModelId": "claude-haiku-4-5",
+       "resolvedProvider": "anthropic",
+       "fallbacksAvailable": [
+        "bedrock",
+        "vertexAnthropic",
+        "claudeaws"
+       ],
+       "planningReasoning": "System credentials planned for: anthropic, bedrock, vertexAnthropic. Total execution order: anthropic(system) → bedrock(system) → vertexAnthropic(system)",
+       "canonicalSlug": "anthropic/claude-haiku-4.5",
+       "finalProvider": "anthropic",
+       "modelAttemptCount": 1,
+       "modelAttempts": [
+        {
+         "canonicalSlug": "anthropic/claude-haiku-4.5",
+         "success": true,
+         "providerAttemptCount": 1,
+         "providerAttempts": [
+          {
+           "provider": "anthropic",
+           "credentialType": "system",
+           "success": true,
+           "startTime": 1791318872334,
+           "endTime": 1791318873719,
+           "providerRequestId": "req_011Cfmd4u4fSQGqkEKzWxP1m",
+           "statusCode": 200,
+           "providerResponseId": "msg_011Cfmd4uQjgDjNRHoPyfTBH"
+          }
+         ]
+        }
+       ],
+       "totalProviderAttemptCount": 1,
+       "affinity": {
+        "outcome": "no_pin"
+       },
+       "clientSessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+       "clientSessionIdSource": "agent"
+      },
+      "cost": "0.00675625",
+      "marketCost": "0.00675625",
+      "surchargeCost": "0.0001",
+      "gatewayCost": "0.00685625",
+      "inferenceCost": "0.00675625",
+      "inputInferenceCost": "0.00602125",
+      "outputInferenceCost": "0.000735",
+      "providerAllowlistCost": "0.0001",
+      "generationId": "gen_01M49ESM2GJKZRH2SF2FQ85G8J",
+      "warnings": [
+       {
+        "type": "compatibility",
+        "feature": "maxOutputTokens",
+        "details": "maxOutputTokens 32000 exceeds the output token limit of 57000 tokens (max output plus thinking budget) for anthropic/claude-haiku-4.5 and was lowered to 25001."
+       }
+      ]
+     }
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "cde19d45-fb7d-4f5b-a1f7-1383c78aae7b"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "message_stop"
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "a5f7ec59-724b-4a3c-a1fe-e58e5a1b3546"
+  },
+  {
+   "type": "user",
+   "message": {
+    "role": "user",
+    "content": [
+     {
+      "tool_use_id": "toolu_01JT3uq1hpX9aAK1djPRKs6z",
+      "type": "tool_result",
+      "content": [
+       {
+        "type": "text",
+        "text": "wrote 5 bytes to /workspace/a.txt"
+       }
+      ]
+     }
+    ]
+   },
+   "parent_tool_use_id": null,
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "uuid": "d174dc4c-4ec9-49e3-8b51-30b383df992a",
+   "timestamp": "2026-10-06T20:34:33.796Z",
+   "tool_use_result": [
+    {
+     "type": "text",
+     "text": "wrote 5 bytes to /workspace/a.txt"
+    }
+   ]
+  },
+  {
+   "type": "system",
+   "subtype": "status",
+   "status": "requesting",
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "uuid": "d4a98646-aa6d-43fd-b553-304ee486216c"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "message_start",
+    "message": {
+     "id": "gen_01M49ESNQMFW5DHQ2KVYH2WMH9",
+     "type": "message",
+     "role": "assistant",
+     "content": [],
+     "model": "claude-haiku-4-5",
+     "stop_reason": null,
+     "stop_sequence": null,
+     "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0
+     }
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "549f7ffe-2956-4480-93b0-d01a40f14ed3",
+   "ttft_ms": 634,
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_start",
+    "index": 0,
+    "content_block": {
+     "type": "thinking",
+     "thinking": ""
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "55958e66-a078-419e-b956-1eac1f58a46a",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": "Great,"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "4cfd488e-4dc0-48ab-97e0-3b6b02d04f36",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " the"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "6dace652-d31a-445c-91f8-dd184e9bfe44",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " file"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "5378ba4a-76b3-4289-af0a-e3929ada1ec4",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " was written successfully. Now I need to"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "a3596cd7-ccf0-42f4-b1cd-c136ec2c4f59",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " tell the"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "92dbb4c7-100f-4036-8904-ee41175c4c2d",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " user in"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "89c75bc6-828a-4d2b-8060-26264981f534",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": " one sentence what I did."
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "f8501be1-e781-4166-b7fb-f7f03e398bab",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "signature_delta",
+     "signature": "EpwDCtgBCBIYAipAsG86MXsh+KkfzpkTJWFQ5Q0ZVLgSzTE+EZEHXLvwybAJ7XAgfJsoMmW0obsJmGWeme5BPKp5s5AFSr5MqIwZ3zIZY2xhdWRlLWhhaWt1LTQtNS0yMDI1MTAwMTgAQgh0aGlua2luZ1okM2I5M2E1ZGQtNzMwMi00ODNmLWFlYWUtMzYyMDc1NTQ4YWUxeh51cHJvZl8wMTFDZlI4YnoyaXE4MUJFZ2ttem5XN0SaARsKGWNsYXVkZS1oYWlrdS00LTUtMjAyNTEwMDGoAdq2ldYGEgx4+SN4edc8ECF02zEaDDDwUtYmscDd3xDKdyIwKaxzksVc3PRhC5I2nkhvkf8+j1FFn1yM+OkwUcJibTdnZTBen4Xj8m34dfiPM2GCKnGFFthb4/ATkJZ4p/7pRHE8N13YrDvlzza9B0+HUte07FCESBjReojmM+zyyx+I/CGDVBjW5fR3bV5rq3pgZ1txbjJVDHDPMB1v++rKjNfsAxC6Qjr6K73uKGYMJoU7aO6PlqyCg5jDjUwzRG5o6jcaghgB"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "bfa4d265-6d4a-44f6-8b6f-e1fbab88a2f3"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 0,
+    "delta": {
+     "type": "thinking_delta",
+     "thinking": ""
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "a796b402-96ba-4bf5-a979-a22d11dc8a1e",
+   "thinking_display": "updates"
+  },
+  {
+   "type": "assistant",
+   "message": {
+    "id": "gen_01M49ESNQMFW5DHQ2KVYH2WMH9",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "thinking",
+      "thinking": "Great, the file was written successfully. Now I need to tell the user in one sentence what I did.",
+      "signature": "EpwDCtgBCBIYAipAsG86MXsh+KkfzpkTJWFQ5Q0ZVLgSzTE+EZEHXLvwybAJ7XAgfJsoMmW0obsJmGWeme5BPKp5s5AFSr5MqIwZ3zIZY2xhdWRlLWhhaWt1LTQtNS0yMDI1MTAwMTgAQgh0aGlua2luZ1okM2I5M2E1ZGQtNzMwMi00ODNmLWFlYWUtMzYyMDc1NTQ4YWUxeh51cHJvZl8wMTFDZlI4YnoyaXE4MUJFZ2ttem5XN0SaARsKGWNsYXVkZS1oYWlrdS00LTUtMjAyNTEwMDGoAdq2ldYGEgx4+SN4edc8ECF02zEaDDDwUtYmscDd3xDKdyIwKaxzksVc3PRhC5I2nkhvkf8+j1FFn1yM+OkwUcJibTdnZTBen4Xj8m34dfiPM2GCKnGFFthb4/ATkJZ4p/7pRHE8N13YrDvlzza9B0+HUte07FCESBjReojmM+zyyx+I/CGDVBjW5fR3bV5rq3pgZ1txbjJVDHDPMB1v++rKjNfsAxC6Qjr6K73uKGYMJoU7aO6PlqyCg5jDjUwzRG5o6jcaghgB"
+     }
+    ],
+    "model": "claude-haiku-4-5",
+    "stop_reason": null,
+    "stop_sequence": null,
+    "usage": {
+     "input_tokens": 0,
+     "output_tokens": 0
+    },
+    "context_management": null
+   },
+   "parent_tool_use_id": null,
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "uuid": "80d578ab-5257-41a9-97d0-3f03fddc8dd3",
+   "timestamp": "2026-10-06T20:34:34.641Z",
+   "thinking_duration_ms": 206
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_stop",
+    "index": 0
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "2faf3380-ec88-447d-bcee-be053da0938b"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_start",
+    "index": 1,
+    "content_block": {
+     "type": "text",
+     "text": ""
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "f6101495-e72b-4666-8214-f49fb1119e03"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 1,
+    "delta": {
+     "type": "text_delta",
+     "text": "I"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "75a7cbc8-1ebb-4cd4-bf09-a7cf31945002"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 1,
+    "delta": {
+     "type": "text_delta",
+     "text": " wrote the"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "cfb88ac1-24c5-40eb-aaab-2b0c4427c37a"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 1,
+    "delta": {
+     "type": "text_delta",
+     "text": " text \"hello\" to a"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "a137320e-6366-4e00-a9ae-ec972839732b"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 1,
+    "delta": {
+     "type": "text_delta",
+     "text": ".txt in"
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "e00eea68-74c6-4d81-a4c9-bd869a41be90"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_delta",
+    "index": 1,
+    "delta": {
+     "type": "text_delta",
+     "text": " the workspace."
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "9e729e19-4fec-46d1-a3b8-eccd3e2d3440"
+  },
+  {
+   "type": "assistant",
+   "message": {
+    "id": "gen_01M49ESNQMFW5DHQ2KVYH2WMH9",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+     {
+      "type": "text",
+      "text": "I wrote the text \"hello\" to a.txt in the workspace."
+     }
+    ],
+    "model": "claude-haiku-4-5",
+    "stop_reason": null,
+    "stop_sequence": null,
+    "usage": {
+     "input_tokens": 0,
+     "output_tokens": 0
+    },
+    "context_management": null
+   },
+   "parent_tool_use_id": null,
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "uuid": "220afcc6-b4c1-445f-bcf8-c6940aeaa346",
+   "timestamp": "2026-10-06T20:34:34.747Z"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "content_block_stop",
+    "index": 1
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "85c8b35c-39b5-4770-ba5b-2bc411398e75"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "message_delta",
+    "delta": {
+     "stop_reason": "end_turn",
+     "stop_sequence": null
+    },
+    "usage": {
+     "input_tokens": 8,
+     "output_tokens": 48,
+     "cache_creation_input_tokens": 208,
+     "cache_read_input_tokens": 4809,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 208,
+      "ephemeral_1h_input_tokens": 0
+     }
+    },
+    "context_management": {
+     "applied_edits": []
+    },
+    "provider_metadata": {
+     "anthropic": {
+      "usage": {
+       "input_tokens": 8,
+       "cache_creation_input_tokens": 208,
+       "cache_read_input_tokens": 4809,
+       "cache_creation": {
+        "ephemeral_5m_input_tokens": 208,
+        "ephemeral_1h_input_tokens": 0
+       },
+       "output_tokens": 48,
+       "service_tier": "standard",
+       "inference_geo": "not_available",
+       "output_tokens_details": {
+        "thinking_tokens": 27
+       }
+      },
+      "cacheCreationInputTokens": 208,
+      "stopSequence": null,
+      "iterations": null,
+      "container": null,
+      "contextManagement": {
+       "appliedEdits": []
+      }
+     },
+     "gateway": {
+      "routing": {
+       "originalModelId": "claude-haiku-4-5",
+       "resolvedProvider": "anthropic",
+       "fallbacksAvailable": [
+        "bedrock",
+        "vertexAnthropic",
+        "claudeaws"
+       ],
+       "planningReasoning": "System credentials planned for: anthropic, bedrock, vertexAnthropic. Total execution order: anthropic(system) → bedrock(system) → vertexAnthropic(system)",
+       "canonicalSlug": "anthropic/claude-haiku-4.5",
+       "finalProvider": "anthropic",
+       "modelAttemptCount": 1,
+       "modelAttempts": [
+        {
+         "canonicalSlug": "anthropic/claude-haiku-4.5",
+         "success": true,
+         "providerAttemptCount": 1,
+         "providerAttempts": [
+          {
+           "provider": "anthropic",
+           "credentialType": "system",
+           "success": true,
+           "startTime": 1791318873877,
+           "endTime": 1791318874705,
+           "providerRequestId": "req_011Cfmd51eHkscYiqTCWuuT9",
+           "statusCode": 200,
+           "providerResponseId": "msg_011Cfmd51ydP5rPpJg5t7bb5"
+          }
+         ]
+        }
+       ],
+       "totalProviderAttemptCount": 1,
+       "affinity": {
+        "outcome": "confirmed",
+        "pinnedProvider": "anthropic"
+       },
+       "clientSessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+       "clientSessionIdSource": "agent"
+      },
+      "cost": "0.0009889",
+      "marketCost": "0.0009889",
+      "surchargeCost": "0.0001",
+      "gatewayCost": "0.0010889",
+      "inferenceCost": "0.0009889",
+      "inputInferenceCost": "0.0007489",
+      "outputInferenceCost": "0.00024",
+      "providerAllowlistCost": "0.0001",
+      "generationId": "gen_01M49ESNQMFW5DHQ2KVYH2WMH9",
+      "warnings": [
+       {
+        "type": "compatibility",
+        "feature": "maxOutputTokens",
+        "details": "maxOutputTokens 32000 exceeds the output token limit of 57000 tokens (max output plus thinking budget) for anthropic/claude-haiku-4.5 and was lowered to 25001."
+       }
+      ]
+     }
+    }
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "6f7c81c3-880b-4bee-914c-42a5914020f1"
+  },
+  {
+   "type": "stream_event",
+   "event": {
+    "type": "message_stop"
+   },
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "parent_tool_use_id": null,
+   "uuid": "d0976efb-e809-4766-811e-888d6cfe808c"
+  },
+  {
+   "duration_api_ms": 2710,
+   "stop_reason": "end_turn",
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+   "total_cost_usd": 0.00774515,
+   "usage": {
+    "input_tokens": 18,
+    "cache_creation_input_tokens": 5017,
+    "cache_read_input_tokens": 4809,
+    "output_tokens": 195,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "server_tool_use": {
+     "web_search_requests": 0,
+     "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 5017
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+   },
+   "modelUsage": {
+    "claude-haiku-4-5": {
+     "inputTokens": 18,
+     "outputTokens": 195,
+     "cacheReadInputTokens": 4809,
+     "cacheCreationInputTokens": 5017,
+     "webSearchRequests": 0,
+     "costUSD": 0.00774515,
+     "contextWindow": 200000,
+     "maxOutputTokens": 32000,
+     "thinkingTokens": 0,
+     "canonicalModel": "claude-haiku-4-5",
+     "provider": "firstParty",
+     "costBasis": "list"
+    }
+   },
+   "permission_denials": [],
+   "terminal_reason": "completed",
+   "fast_mode_state": "off",
+   "fast_mode_disabled_reason": "sdk_opt_in_required",
+   "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+     "background": 0,
+     "foreground": 0,
+     "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+     "parent": 0,
+     "user": 0,
+     "system": 0
+    },
+    "refused": {
+     "depth_limit": 0,
+     "concurrency_limit": 0,
+     "budget": 0
+    },
+    "by_type": {}
+   },
+   "is_error": false,
+   "num_turns": 2,
+   "subtype": "success",
+   "api_error_status": null,
+   "result": "I wrote the text \"hello\" to a.txt in the workspace.",
+   "ttft_ms": 1580,
+   "type": "result",
+   "duration_ms": 2751,
+   "uuid": "2231196e-f1a6-4e11-b8c5-295f459545c0",
+   "ttft_stream_ms": 915,
+   "time_to_request_ms": 17,
+   "first_content_frame_ms": 916,
+   "user_message_uuid": "5d36a731-258f-5f47-a696-2bd1b36289d0",
+   "user_message_uuids": [
+    "5d36a731-258f-5f47-a696-2bd1b36289d0"
+   ],
+   "request_sent_wall_ms": 1791318872016,
+   "queued_turn_count": 0,
+   "result_index": 0
+  },
+  {
+   "type": "command_lifecycle",
+   "command_uuid": "5d36a731-258f-5f47-a696-2bd1b36289d0",
+   "state": "completed",
+   "uuid": "ffbec08d-6b97-4af8-8383-ec35b9a7d4d7",
+   "session_id": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+  }
+ ],
+ "appends": [
+  {
+   "key": {
+    "projectKey": "-tmp-sessions-wrun-01M49ESKCS941GFQKDHAD9SDHG-workspace",
+    "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+   },
+   "entries": [
+    {
+     "type": "queue-operation",
+     "operation": "enqueue",
+     "timestamp": "2026-10-06T20:34:31.996Z",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "content": "Write \"hello\" to a.txt, then tell me in one sentence what you did."
+    },
+    {
+     "type": "queue-operation",
+     "operation": "dequeue",
+     "timestamp": "2026-10-06T20:34:31.997Z",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+    },
+    {
+     "parentUuid": null,
+     "isSidechain": false,
+     "promptId": "492fcf46-8900-4acb-b2bb-ff3179ac47c8",
+     "type": "user",
+     "message": {
+      "role": "user",
+      "content": "Write \"hello\" to a.txt, then tell me in one sentence what you did."
+     },
+     "uuid": "5d36a731-258f-5f47-a696-2bd1b36289d0",
+     "timestamp": "2026-10-06T20:34:32.004Z",
+     "permissionMode": "dontAsk",
+     "promptSource": "sdk",
+     "turnOrigin": "sdk",
+     "turnPosition": {
+      "promptIndex": 0,
+      "turnIndex": 1
+     },
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "parentUuid": "5d36a731-258f-5f47-a696-2bd1b36289d0",
+     "isSidechain": false,
+     "attachment": {
+      "type": "environment",
+      "snapshot": {
+       "workingDirectory": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+       "isWorktree": false,
+       "isGitRepo": false,
+       "additionalWorkingDirectories": [],
+       "platform": "darwin",
+       "shell": "unknown",
+       "osVersion": "Darwin 27.2.0"
+      }
+     },
+     "type": "attachment",
+     "uuid": "9e7e1cdc-68cc-4f59-9872-a0afede6e4b8",
+     "timestamp": "2026-10-06T20:34:32.003Z",
+     "rendered": [
+      {
+       "content": "<system-reminder>\n# Environment\nYou have been invoked in the following environment: \n - Primary working directory: /tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace\n - Is a git repository: false\n - Platform: darwin\n - Shell: unknown\n - OS Version: Darwin 27.2.0\n</system-reminder>"
+      }
+     ],
+     "renderedRole": "system",
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "parentUuid": "9e7e1cdc-68cc-4f59-9872-a0afede6e4b8",
+     "isSidechain": false,
+     "attachment": {
+      "type": "model",
+      "identity": {
+       "modelId": "claude-haiku-4-5",
+       "marketingName": "Haiku 4.5",
+       "knowledgeCutoff": "February 2025"
+      },
+      "text": "You are powered by the model named Haiku 4.5. The exact model ID is claude-haiku-4-5. Assistant knowledge cutoff is February 2025."
+     },
+     "type": "attachment",
+     "uuid": "de49b4f2-4d8e-41b1-904d-ca299a330aab",
+     "timestamp": "2026-10-06T20:34:32.003Z",
+     "rendered": [
+      {
+       "content": "<system-reminder>\nYou are powered by the model named Haiku 4.5. The exact model ID is claude-haiku-4-5. Assistant knowledge cutoff is February 2025.\n</system-reminder>"
+      }
+     ],
+     "renderedRole": "system",
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "parentUuid": "de49b4f2-4d8e-41b1-904d-ca299a330aab",
+     "isSidechain": false,
+     "attachment": {
+      "type": "total_tokens_reminder",
+      "text": "<total_tokens>15000000 tokens left</total_tokens>"
+     },
+     "type": "attachment",
+     "uuid": "3403042b-c58b-46b3-ac36-708f440099cc",
+     "timestamp": "2026-10-06T20:34:32.003Z",
+     "rendered": [
+      {
+       "content": "<system-reminder>\n<total_tokens>15000000 tokens left</total_tokens>\n</system-reminder>"
+      }
+     ],
+     "renderedRole": "system",
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "type": "atis-latch",
+     "atis": "",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+    },
+    {
+     "parentUuid": "3403042b-c58b-46b3-ac36-708f440099cc",
+     "isSidechain": false,
+     "attachment": {
+      "type": "session_context",
+      "context": {}
+     },
+     "type": "attachment",
+     "uuid": "43c8b857-bd68-4932-9221-dc1c8ed260ed",
+     "timestamp": "2026-10-06T20:34:32.010Z",
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "parentUuid": "43c8b857-bd68-4932-9221-dc1c8ed260ed",
+     "isSidechain": false,
+     "attachment": {
+      "type": "date",
+      "date": "2026-10-06"
+     },
+     "type": "attachment",
+     "uuid": "ee4503d0-1ab3-414a-bb6e-b8942aef535f",
+     "timestamp": "2026-10-06T20:34:32.010Z",
+     "rendered": [
+      {
+       "content": "<system-reminder>\nToday's date is 2026-10-06.\n</system-reminder>"
+      }
+     ],
+     "renderedRole": "system",
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "parentUuid": "ee4503d0-1ab3-414a-bb6e-b8942aef535f",
+     "isSidechain": false,
+     "attachment": {
+      "type": "prompt_snapshot",
+      "systemPrompt": "<trimmed>",
+      "reminderFold": "<trimmed>",
+      "echoWireToolInputs": "<trimmed>",
+      "contextRendering": "<trimmed>"
+     },
+     "type": "attachment",
+     "uuid": "60ed3786-bff5-4716-ac84-255eaed49f65",
+     "timestamp": "2026-10-06T20:34:32.010Z",
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    }
+   ]
+  },
+  {
+   "key": {
+    "projectKey": "-tmp-sessions-wrun-01M49ESKCS941GFQKDHAD9SDHG-workspace",
+    "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+   },
+   "entries": [
+    {
+     "parentUuid": "60ed3786-bff5-4716-ac84-255eaed49f65",
+     "isSidechain": false,
+     "message": {
+      "id": "gen_01M49ESM2GJKZRH2SF2FQ85G8J",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+       {
+        "type": "thinking",
+        "thinking": "The user wants me to:\n1. Write \"hello\" to a.txt\n2. Tell them in one sentence what I did\n\nI'll use the write_file tool to create/write to a.txt with the content \"hello\", then provide a one-sentence summary.",
+        "signature": "EokECtgBCBIYAipAq7OgKJw5AGx1WdrDszcgKKJVMDKXJpCissMbaYBjQkSwFNnPwPIWtYp7YWvm+xFX3LwwN2GRNYNiCVJ+klhlWjIZY2xhdWRlLWhhaWt1LTQtNS0yMDI1MTAwMTgAQgh0aGlua2luZ1okM2I5M2E1ZGQtNzMwMi00ODNmLWFlYWUtMzYyMDc1NTQ4YWUxeh51cHJvZl8wMTFDZlI4YnoyaXE4MUJFZ2ttem5XN0SaARsKGWNsYXVkZS1oYWlrdS00LTUtMjAyNTEwMDGoAdm2ldYGEgxzdPdFIPo5d3UukGoaDFL4YmoFOO3xsLAXyCIwZY4lb0Vz3z5OBPmSe+8geoME6Q3TXBz4zbwpgYksknQENcwphOgHO5T+2hoJbKDZKt0BjQU4Hwe/EAf2GJ7Bns9ngsXXZR1vrSQQb/k01CiRoC20aDbWK1elCeX3O3rOYcTuDUwntpJX4nJhleb5O06vFwVMW6Cnv3Pj+bRxTuzmZtx1xPtbCm7MQXcTtk9JP1j+KazXxu22uGh74yov4T266SeYPasGgOvvudkzI2RBPsXxmGuEAQ7PzSAYjf2GWWZhcRQffhhqb14HpMqJ7CwPLseV13v8uICh3vNuqbmX7RzrorXfgcZv9pkzcE7rRzizvTwGiM4j3KxQUKauduNd7kLsU3ZQ/nTJsX46ojYYAQ=="
+       }
+      ],
+      "model": "claude-haiku-4-5",
+      "stop_reason": "tool_use",
+      "stop_sequence": null,
+      "usage": {
+       "input_tokens": 10,
+       "cache_creation_input_tokens": 4809,
+       "cache_read_input_tokens": 0,
+       "output_tokens": 147,
+       "output_tokens_details": {
+        "thinking_tokens": 0
+       },
+       "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+       },
+       "service_tier": "standard",
+       "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 4809
+       },
+       "inference_geo": "",
+       "iterations": [],
+       "speed": "standard",
+       "fallback_credit": null
+      },
+      "stop_details": null
+     },
+     "thinkingDurationMs": 664,
+     "apiBlockIndex": 0,
+     "type": "assistant",
+     "uuid": "17da8f98-f65d-468e-9748-00fd6dd85ad5",
+     "timestamp": "2026-10-06T20:34:33.578Z",
+     "perTurnEffort": null,
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "parentUuid": "17da8f98-f65d-468e-9748-00fd6dd85ad5",
+     "isSidechain": false,
+     "message": {
+      "id": "gen_01M49ESM2GJKZRH2SF2FQ85G8J",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+       {
+        "type": "tool_use",
+        "id": "toolu_01JT3uq1hpX9aAK1djPRKs6z",
+        "name": "mcp__hands__write_file",
+        "input": {
+         "path": "/workspace/a.txt",
+         "content": "hello"
+        }
+       }
+      ],
+      "model": "claude-haiku-4-5",
+      "stop_reason": "tool_use",
+      "stop_sequence": null,
+      "usage": {
+       "input_tokens": 10,
+       "cache_creation_input_tokens": 4809,
+       "cache_read_input_tokens": 0,
+       "output_tokens": 147,
+       "output_tokens_details": {
+        "thinking_tokens": 0
+       },
+       "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+       },
+       "service_tier": "standard",
+       "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 4809
+       },
+       "inference_geo": "",
+       "iterations": [],
+       "speed": "standard",
+       "fallback_credit": null
+      },
+      "stop_details": null
+     },
+     "apiBlockIndex": 1,
+     "type": "assistant",
+     "uuid": "6c2a16ea-4068-4a17-af44-5ed100ba881e",
+     "timestamp": "2026-10-06T20:34:33.763Z",
+     "perTurnEffort": null,
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "parentUuid": "6c2a16ea-4068-4a17-af44-5ed100ba881e",
+     "isSidechain": false,
+     "promptId": "492fcf46-8900-4acb-b2bb-ff3179ac47c8",
+     "type": "user",
+     "message": {
+      "role": "user",
+      "content": [
+       {
+        "tool_use_id": "toolu_01JT3uq1hpX9aAK1djPRKs6z",
+        "type": "tool_result",
+        "content": [
+         {
+          "type": "text",
+          "text": "wrote 5 bytes to /workspace/a.txt"
+         }
+        ]
+       }
+      ]
+     },
+     "uuid": "d174dc4c-4ec9-49e3-8b51-30b383df992a",
+     "timestamp": "2026-10-06T20:34:33.796Z",
+     "toolUseResult": [
+      {
+       "type": "text",
+       "text": "wrote 5 bytes to /workspace/a.txt"
+      }
+     ],
+     "sourceToolAssistantUUID": "6c2a16ea-4068-4a17-af44-5ed100ba881e",
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "parentUuid": "d174dc4c-4ec9-49e3-8b51-30b383df992a",
+     "isSidechain": false,
+     "attachment": {
+      "type": "prompt_snapshot",
+      "systemPrompt": "<trimmed>",
+      "tools": "<trimmed>",
+      "cliPrefix": "<trimmed>",
+      "reminderFold": "<trimmed>",
+      "echoWireToolInputs": "<trimmed>",
+      "contextRendering": "<trimmed>"
+     },
+     "type": "attachment",
+     "uuid": "753f3ed2-1a41-4ad8-9ddd-fa1ae1205a15",
+     "timestamp": "2026-10-06T20:34:33.797Z",
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "parentUuid": "753f3ed2-1a41-4ad8-9ddd-fa1ae1205a15",
+     "isSidechain": false,
+     "attachment": {
+      "type": "total_tokens_reminder",
+      "text": "<total_tokens>14995034 tokens left</total_tokens>"
+     },
+     "type": "attachment",
+     "uuid": "25fb4b4c-9bd1-4808-94b0-b2a9187161e7",
+     "timestamp": "2026-10-06T20:34:33.798Z",
+     "rendered": [
+      {
+       "content": "<system-reminder>\n<total_tokens>14995034 tokens left</total_tokens>\n</system-reminder>"
+      }
+     ],
+     "renderedRole": "system",
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    }
+   ]
+  },
+  {
+   "key": {
+    "projectKey": "-tmp-sessions-wrun-01M49ESKCS941GFQKDHAD9SDHG-workspace",
+    "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+   },
+   "entries": [
+    {
+     "type": "last-prompt",
+     "lastPrompt": "Write \"hello\" to a.txt, then tell me in one sentence what you did.",
+     "leafUuid": "25fb4b4c-9bd1-4808-94b0-b2a9187161e7",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+    },
+    {
+     "type": "atis-latch",
+     "atis": "",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+    }
+   ]
+  },
+  {
+   "key": {
+    "projectKey": "-tmp-sessions-wrun-01M49ESKCS941GFQKDHAD9SDHG-workspace",
+    "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+   },
+   "entries": [
+    {
+     "parentUuid": "25fb4b4c-9bd1-4808-94b0-b2a9187161e7",
+     "isSidechain": false,
+     "message": {
+      "id": "gen_01M49ESNQMFW5DHQ2KVYH2WMH9",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+       {
+        "type": "thinking",
+        "thinking": "Great, the file was written successfully. Now I need to tell the user in one sentence what I did.",
+        "signature": "EpwDCtgBCBIYAipAsG86MXsh+KkfzpkTJWFQ5Q0ZVLgSzTE+EZEHXLvwybAJ7XAgfJsoMmW0obsJmGWeme5BPKp5s5AFSr5MqIwZ3zIZY2xhdWRlLWhhaWt1LTQtNS0yMDI1MTAwMTgAQgh0aGlua2luZ1okM2I5M2E1ZGQtNzMwMi00ODNmLWFlYWUtMzYyMDc1NTQ4YWUxeh51cHJvZl8wMTFDZlI4YnoyaXE4MUJFZ2ttem5XN0SaARsKGWNsYXVkZS1oYWlrdS00LTUtMjAyNTEwMDGoAdq2ldYGEgx4+SN4edc8ECF02zEaDDDwUtYmscDd3xDKdyIwKaxzksVc3PRhC5I2nkhvkf8+j1FFn1yM+OkwUcJibTdnZTBen4Xj8m34dfiPM2GCKnGFFthb4/ATkJZ4p/7pRHE8N13YrDvlzza9B0+HUte07FCESBjReojmM+zyyx+I/CGDVBjW5fR3bV5rq3pgZ1txbjJVDHDPMB1v++rKjNfsAxC6Qjr6K73uKGYMJoU7aO6PlqyCg5jDjUwzRG5o6jcaghgB"
+       }
+      ],
+      "model": "claude-haiku-4-5",
+      "stop_reason": "end_turn",
+      "stop_sequence": null,
+      "usage": {
+       "input_tokens": 8,
+       "cache_creation_input_tokens": 208,
+       "cache_read_input_tokens": 4809,
+       "output_tokens": 48,
+       "output_tokens_details": {
+        "thinking_tokens": 0
+       },
+       "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+       },
+       "service_tier": "standard",
+       "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 208
+       },
+       "inference_geo": "",
+       "iterations": [],
+       "speed": "standard",
+       "fallback_credit": null
+      },
+      "stop_details": null
+     },
+     "thinkingDurationMs": 206,
+     "apiBlockIndex": 0,
+     "attributionMcpServer": "hands",
+     "attributionMcpTool": "write_file",
+     "type": "assistant",
+     "uuid": "80d578ab-5257-41a9-97d0-3f03fddc8dd3",
+     "timestamp": "2026-10-06T20:34:34.641Z",
+     "perTurnEffort": null,
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    },
+    {
+     "parentUuid": "80d578ab-5257-41a9-97d0-3f03fddc8dd3",
+     "isSidechain": false,
+     "message": {
+      "id": "gen_01M49ESNQMFW5DHQ2KVYH2WMH9",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+       {
+        "type": "text",
+        "text": "I wrote the text \"hello\" to a.txt in the workspace."
+       }
+      ],
+      "model": "claude-haiku-4-5",
+      "stop_reason": "end_turn",
+      "stop_sequence": null,
+      "usage": {
+       "input_tokens": 8,
+       "cache_creation_input_tokens": 208,
+       "cache_read_input_tokens": 4809,
+       "output_tokens": 48,
+       "output_tokens_details": {
+        "thinking_tokens": 0
+       },
+       "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+       },
+       "service_tier": "standard",
+       "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 208
+       },
+       "inference_geo": "",
+       "iterations": [],
+       "speed": "standard",
+       "fallback_credit": null
+      },
+      "stop_details": null
+     },
+     "apiBlockIndex": 1,
+     "attributionMcpServer": "hands",
+     "attributionMcpTool": "write_file",
+     "type": "assistant",
+     "uuid": "220afcc6-b4c1-445f-bcf8-c6940aeaa346",
+     "timestamp": "2026-10-06T20:34:34.747Z",
+     "perTurnEffort": null,
+     "userType": "external",
+     "entrypoint": "sdk-ts",
+     "cwd": "/tmp/sessions/wrun_01M49ESKCS941GFQKDHAD9SDHG/workspace",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "version": "2.1.289",
+     "gitBranch": "HEAD"
+    }
+   ]
+  },
+  {
+   "key": {
+    "projectKey": "-tmp-sessions-wrun-01M49ESKCS941GFQKDHAD9SDHG-workspace",
+    "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+   },
+   "entries": [
+    {
+     "type": "last-prompt",
+     "lastPrompt": "Write \"hello\" to a.txt, then tell me in one sentence what you did.",
+     "leafUuid": "220afcc6-b4c1-445f-bcf8-c6940aeaa346",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+    }
+   ]
+  },
+  {
+   "key": {
+    "projectKey": "-tmp-sessions-wrun-01M49ESKCS941GFQKDHAD9SDHG-workspace",
+    "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56"
+   },
+   "entries": [
+    {
+     "type": "cost-state",
+     "sessionId": "c16d9a96-4cca-58a5-9de1-024ef260af56",
+     "totalCostUSD": 0.00774515,
+     "totalAPIDuration": 2710,
+     "totalAPIDurationWithoutRetries": 2708,
+     "totalToolDuration": 26,
+     "totalLinesAdded": 0,
+     "totalLinesRemoved": 0,
+     "totalDuration": 3071,
+     "startTime": 1791318871754,
+     "modelUsage": {
+      "claude-haiku-4-5": {
+       "inputTokens": 18,
+       "outputTokens": 195,
+       "thinkingTokens": 0,
+       "cacheReadInputTokens": 4809,
+       "cacheCreationInputTokens": 5017,
+       "webSearchRequests": 0,
+       "costUSD": 0.00774515
+      }
+     },
+     "hasUnknownModelCost": false
+    }
+   ]
+  }
+ ],
+ "toolCalls": [
+  {
+   "name": "write_file",
+   "args": {
+    "path": "/workspace/a.txt",
+    "content": "hello"
+   },
+   "meta": {
+    "claudecode/toolUseId": "toolu_01JT3uq1hpX9aAK1djPRKs6z",
+    "progressToken": 2
+   }
+  }
+ ],
+ "transcript": [
+  {
+   "type": "message",
+   "role": "assistant",
+   "text": "",
+   "toolCalls": [
+    {
+     "id": "toolu_01JT3uq1hpX9aAK1djPRKs6z",
+     "name": "write_file"
+    }
+   ]
+  },
+  {
+   "type": "message",
+   "role": "assistant",
+   "text": "I wrote the text \"hello\" to a.txt in the workspace."
+  },
+  {
+   "type": "turn",
+   "status": "completed"
+  }
+ ],
+ "sessionId": "wrun_01M49ESKCS941GFQKDHAD9SDHG"
+}

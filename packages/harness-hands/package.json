@@ -1,0 +1,35 @@
+{
+  "name": "harness-world-hands",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Harness-neutral workspace tools whose files live in the session's event log (a document, plus a blob stream for large files), and example document tools.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tools": "./src/tools.ts",
+    "./native": "./src/native.ts",
+    "./workspace": "./src/workspace.ts",
+    "./specs": "./src/specs.ts",
+    "./runtime": "./src/runtime-exports.ts",
+    "./fx": "./src/fx-exports.ts",
+    "./workspace-runtime": "./src/runtime.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "1.0.4",
+    "@earendil-works/pi-ai": "1.0.4",
+    "@vercel/sandbox": "3.7.0",
+    "harness-world": "workspace:*",
+    "just-bash": "3.4.2",
+    "typebox": "1.3.27",
+    "ulid": "^3.0.2"
+  },
+  "devDependencies": {
+    "@workflow/world-local": "catalog:",
+    "harness-world-pi": "workspace:*",
+    "libfx": "catalog:"
+  }
+}

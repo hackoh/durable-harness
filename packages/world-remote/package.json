@@ -1,0 +1,11 @@
+{
+  "name": "harness-world-remote",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A World over HTTP: a client that implements @workflow/world by calling a server handler that fronts a real World.",
+  "exports": { ".": "./src/index.ts", "./server": "./src/server.ts", "./ws": "./src/ws.ts" },
+  "scripts": { "test": "vitest run", "typecheck": "tsc --noEmit" },
+  "dependencies": { "@workflow/errors": "catalog:", "@workflow/world": "5.0.3" },
+  "devDependencies": { "@workflow/world-local": "catalog:", "harness-world": "workspace:*" }
+}

@@ -1,0 +1,5 @@
+.vercel
+.env*
+.sandbox-host
+.eve
+.output

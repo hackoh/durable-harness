@@ -1,0 +1,37 @@
+{
+  "name": "harness-world-claude-code",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code (the Claude Agent SDK) on harness-world: a durable kernel Harness whose transcript, tool calls and workspace live in the run's log.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./binary": "./src/binary.ts",
+    "./testing": "./test/fake-sdk.ts",
+    "./testing/stand-in": "./test/stand-in.ts",
+    "./testing/fake-anthropic": "./test/fake-anthropic.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "example": "tsx examples/local.ts"
+  },
+  "dependencies": {
+    "harness-world": "workspace:*",
+    "harness-world-process": "workspace:*"
+  },
+  "peerDependencies": {
+    "@anthropic-ai/claude-agent-sdk": "0.3.296",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@anthropic-ai/claude-agent-sdk": "0.3.296",
+    "@vercel/sandbox": "3.7.0",
+    "@workflow/world": "catalog:",
+    "@workflow/world-local": "catalog:",
+    "@workflow/world-postgres": "catalog:",
+    "harness-world-hands": "workspace:*",
+    "harness-world-sandbox": "workspace:*",
+    "zod": "4.5.4"
+  }
+}

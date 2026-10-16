@@ -1,0 +1,35 @@
+{
+  "name": "harness-world-opencode",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenCode v2 (@opencode/sdk) as a durable kernel harness on harness-world: its committed events mirrored into the run's log, tool-less unless it has a workspace (virtual, or the session's Vercel Sandbox), where its own tools run.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./records": "./src/records.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "example": "tsx examples/local.ts"
+  },
+  "dependencies": {
+    "@opencode/client": "2.0.22",
+    "@opencode/core": "2.0.22",
+    "@opencode/plugin": "2.0.22",
+    "@opencode/schema": "2.0.22",
+    "@opencode/sdk": "2.0.22",
+    "@opencode/server": "2.0.22",
+    "@workflow/world": "catalog:",
+    "effect": "4.0.0-rc.112",
+    "harness-world": "workspace:*",
+    "harness-world-process": "workspace:*",
+    "harness-world-sandbox": "workspace:*"
+  },
+  "devDependencies": {
+    "@workflow/world-local": "catalog:",
+    "@workflow/world-postgres": "catalog:",
+    "harness-world-hands": "workspace:*",
+    "libfx": "catalog:"
+  }
+}

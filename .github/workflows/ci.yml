@@ -1,0 +1,278 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Nightly, so the world-vercel lane (manual or nightly only) runs without anyone asking.
+    - cron: '23 7 * * *'
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+env:
+  # The CLI checks npm for a newer version once every few days otherwise.
+  WORKFLOW_NO_UPDATE_CHECK: '1'
+
+jobs:
+  # Nothing a public repository must not have (CONTRIBUTING.md, "Public
+  # hygiene"): gitleaks over the tree and the commits being added, then
+  # scripts/check-public.mjs over every tracked file and the text that becomes
+  # a commit message (a pull request's title and body: squash merges use them;
+  # on a push, the pushed commits' messages). Organisation-specific patterns
+  # come from the PUBLIC_DENYLIST secret, which pull requests from forks do not
+  # get; set the variable PUBLIC_DENYLIST_REQUIRED to `1` to fail a run without it.
+  public-hygiene:
+    if: github.event_name == 'pull_request' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      # The pinned gitleaks release and its linux_x64 checksum (from the release's checksums.txt).
+      GITLEAKS_VERSION: 8.30.1
+      GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+      BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+      HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          # Node only, for scripts/check-public.mjs: no pnpm in this job, so no package manager cache.
+          package-manager-cache: false
+      - name: Install gitleaks
+        run: |
+          curl -sSfL -o "$RUNNER_TEMP/gitleaks.tar.gz" \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          echo "${GITLEAKS_SHA256}  $RUNNER_TEMP/gitleaks.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/gitleaks.tar.gz" -C "$RUNNER_TEMP" gitleaks
+      - name: gitleaks, the tree
+        run: '"$RUNNER_TEMP/gitleaks" dir . --no-banner --redact --exit-code 1'
+      - name: gitleaks, the commits being added
+        run: |
+          if [ -n "$BASE_SHA" ] && ! echo "$BASE_SHA" | grep -qE '^0+$' && git cat-file -e "$BASE_SHA^{commit}" 2>/dev/null; then
+            range="$BASE_SHA..$HEAD_SHA"
+          else
+            range="-1 $HEAD_SHA"
+          fi
+          "$RUNNER_TEMP/gitleaks" git . --no-banner --redact --exit-code 1 --log-opts="$range"
+      - name: Internal markers (scripts/check-public.mjs)
+        env:
+          PUBLIC_DENYLIST: ${{ secrets.PUBLIC_DENYLIST }}
+          PUBLIC_DENYLIST_REQUIRED: ${{ github.event_name == 'push' && vars.PUBLIC_DENYLIST_REQUIRED || '0' }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: node scripts/check-public.mjs --commits "$BASE_SHA..$HEAD_SHA"
+
+  typecheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v6 # the version comes from packageManager
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      # Nothing that can run in a Function starts a process, loads pi-coding-agent's
+      # tools or NodeExecutionEnv, or mints the machine brand (docs/workspaces.md §6).
+      - name: Host spawn lint
+        run: node --test scripts/lint-host-spawn.test.mjs && node scripts/lint-host-spawn.mjs
+      # durable-harness stays on 0.0.x: a changeset may only be a patch, and only
+      # for durable-harness (docs/releasing.md). The Release workflow runs it too.
+      - name: Check the release line
+        run: pnpm check:changesets
+      # The release gate on every change (the Release workflow runs it before a
+      # publish too): durable-harness's build ships the relay bundle, no stub or
+      # stand-in, Claude Code and Codex only on a branded machine, and the
+      # relay's model port authenticates (modelAuth, checked on Linux).
+      - name: Release gate (durable-harness's build)
+        env:
+          DH_RELEASE_GATE: '1'
+        run: pnpm --filter durable-harness build && pnpm --filter durable-harness check-dist
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # Tests that need a credential (AI Gateway) or a sandbox skip themselves.
+      - run: pnpm test
+
+  # Every harness, driven with a scripted model on world-local, then inspected
+  # with the stock Workflow CLI (packages/cli-check).
+  cli-check-local:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CLI_CHECK_WORLDS: local
+      CLI_CHECK_OUT: ${{ github.workspace }}/.cli-check
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm cli-check
+      - name: Report
+        if: always()
+        run: if [ -f "$CLI_CHECK_OUT/report.md" ]; then cat "$CLI_CHECK_OUT/report.md" >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v6
+        if: failure()
+        with:
+          name: cli-check-local
+          path: ${{ env.CLI_CHECK_OUT }}
+          retention-days: 7
+
+  # The same on world-postgres, in a service container (the same image as docker-compose.yml).
+  cli-check-postgres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: world
+          POSTGRES_PASSWORD: world
+          POSTGRES_DB: world
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U world"
+          --health-interval 2s
+          --health-timeout 5s
+          --health-retries 30
+    env:
+      CLI_CHECK_WORLDS: postgres
+      CLI_CHECK_OUT: ${{ github.workspace }}/.cli-check
+      WORKFLOW_POSTGRES_URL: postgres://world:world@localhost:5432/world
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: World migrations
+        run: node packages/cli-check/node_modules/@workflow/world-postgres/bin/setup.js
+      # The kernel on the World's in-band writer fence, documents (harness-world src/docs.ts), and its own queue
+      # prefix delivered to its own route (src/queue-postgres.test.ts): the
+      # `test` job runs these on world-local only.
+      - name: In-band fence, documents and the kernel's queue on world-postgres
+        run: pnpm --filter harness-world exec vitest run src/in-band-fence.test.ts src/docs-kernel.test.ts src/queue-postgres.test.ts
+      # A worker process that makes no agents forwards durable-harness's queue
+      # (forwardQueue): its start-up recovery reaches the app's flow route.
+      - name: durable-harness's forwardQueue on world-postgres
+        run: pnpm --filter durable-harness exec vitest run test/forward-queue.test.ts
+      - run: pnpm cli-check
+      - name: Report
+        if: always()
+        run: if [ -f "$CLI_CHECK_OUT/report.md" ]; then cat "$CLI_CHECK_OUT/report.md" >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v6
+        if: failure()
+        with:
+          name: cli-check-postgres
+          path: ${{ env.CLI_CHECK_OUT }}
+          retention-days: 7
+
+  # Non-blocking: every harness on a Postgres whose timezone is not UTC, which
+  # pins world-postgres's created_at skew (a known issue, src/known.ts).
+  cli-check-optional:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    continue-on-error: true
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: world
+          POSTGRES_PASSWORD: world
+          POSTGRES_DB: world
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U world"
+          --health-interval 2s
+          --health-timeout 5s
+          --health-retries 30
+    env:
+      WORKFLOW_POSTGRES_URL: postgres://world:world@localhost:5432/world
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: World migrations
+        run: node packages/cli-check/node_modules/@workflow/world-postgres/bin/setup.js
+      - name: Every harness on world-postgres with the database in America/Los_Angeles
+        run: |
+          psql "$WORKFLOW_POSTGRES_URL" -c "ALTER DATABASE world SET timezone TO 'America/Los_Angeles'"
+          pnpm cli-check
+        env:
+          CLI_CHECK_WORLDS: postgres
+          CLI_CHECK_PG_TIMEZONE: America/Los_Angeles
+          CLI_CHECK_OUT: ${{ github.workspace }}/.cli-check-tz
+      - name: Report
+        if: always()
+        run: if [ -f .cli-check-tz/report.md ]; then cat .cli-check-tz/report.md >> "$GITHUB_STEP_SUMMARY"; fi
+
+  # world-vercel, through a deployment of apps/demo (its `reference` harness:
+  # no model, no cost). Only nightly or by hand, and only when the secret and
+  # the deployment URL are configured; otherwise every step is skipped.
+  cli-check-vercel:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    continue-on-error: true
+    # The secrets reach only the steps that read them (not `pnpm install`'s build scripts).
+    env:
+      CLI_CHECK_VERCEL_URL: ${{ vars.CLI_CHECK_VERCEL_URL }}
+      CLI_CHECK_VERCEL_PROJECT: ${{ vars.CLI_CHECK_VERCEL_PROJECT }}
+      CLI_CHECK_VERCEL_TEAM: ${{ vars.CLI_CHECK_VERCEL_TEAM }}
+      CLI_CHECK_VERCEL_ENV: ${{ vars.CLI_CHECK_VERCEL_ENV || 'production' }}
+      CLI_CHECK_OUT: ${{ github.workspace }}/.cli-check
+    steps:
+      - name: Configured?
+        id: configured
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -n "$VERCEL_TOKEN" ] && [ -n "$CLI_CHECK_VERCEL_URL" ] && [ -n "$CLI_CHECK_VERCEL_PROJECT" ] && [ -n "$CLI_CHECK_VERCEL_TEAM" ]; then echo "yes=true" >> "$GITHUB_OUTPUT"; else echo "::notice::world-vercel lane skipped: set the VERCEL_TOKEN secret and the CLI_CHECK_VERCEL_URL, CLI_CHECK_VERCEL_PROJECT and CLI_CHECK_VERCEL_TEAM variables"; fi
+      - uses: actions/checkout@v5
+        if: steps.configured.outputs.yes == 'true'
+      - uses: pnpm/action-setup@v6
+        if: steps.configured.outputs.yes == 'true'
+      - uses: actions/setup-node@v5
+        if: steps.configured.outputs.yes == 'true'
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+        if: steps.configured.outputs.yes == 'true'
+      - run: pnpm cli-check vercel
+        if: steps.configured.outputs.yes == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+      - name: Report
+        if: always() && steps.configured.outputs.yes == 'true'
+        run: if [ -f "$CLI_CHECK_OUT/report.md" ]; then cat "$CLI_CHECK_OUT/report.md" >> "$GITHUB_STEP_SUMMARY"; fi

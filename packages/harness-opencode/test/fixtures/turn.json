@@ -1,0 +1,645 @@
+{
+ "runId": "wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+ "events": [
+  {
+   "id": "evt_112f5ad9c001D3a9QTQ2bdsA4w",
+   "seq": 0,
+   "created": 1791319453084,
+   "type": "session.created.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "projectID": "ba910a5619d9336650933716a4b84ccad02f50f7",
+    "location": {
+     "directory": "/tmp/harness-opencode/wrun_01M49FBAPHC1J9MZE7WNJEVG7A"
+    },
+    "subpath": "../../../../tmp/harness-opencode/wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "slug": "playful-circuit",
+    "title": "harness-world session",
+    "permissions": [
+     {
+      "action": "*",
+      "resource": "*",
+      "effect": "deny"
+     },
+     {
+      "action": "bash",
+      "resource": "*",
+      "effect": "allow"
+     },
+     {
+      "action": "read_file",
+      "resource": "*",
+      "effect": "allow"
+     },
+     {
+      "action": "write_file",
+      "resource": "*",
+      "effect": "allow"
+     },
+     {
+      "action": "edit_file",
+      "resource": "*",
+      "effect": "allow"
+     },
+     {
+      "action": "list_files",
+      "resource": "*",
+      "effect": "allow"
+     },
+     {
+      "action": "unsafe_send_email",
+      "resource": "*",
+      "effect": "allow"
+     },
+     {
+      "action": "unsafe_make_payment",
+      "resource": "*",
+      "effect": "allow"
+     }
+    ],
+    "version": "unknown"
+   }
+  },
+  {
+   "id": "evt_112f5ae3f002owp50XyXVoejQW",
+   "seq": 1,
+   "created": 1791319453247,
+   "type": "session.inbox.enqueued.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "inboxID": "msg_evnt_00000000000000000000000004",
+    "item": {
+     "type": "user",
+     "payload": {
+      "text": "Write a haiku about logs to haiku.txt, then read it back."
+     },
+     "delivery": "queue"
+    }
+   }
+  },
+  {
+   "id": "evt_112f5ae44001yEOFExWvwdzWIA",
+   "seq": 2,
+   "created": 1791319453252,
+   "type": "session.execution.started.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A"
+   }
+  },
+  {
+   "id": "evt_112f5ae48001lA1GSDBoXVZhDG",
+   "seq": 3,
+   "created": 1791319453256,
+   "type": "session.instructions.updated.2",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "delta": {
+     "core/date": "5c8dae29775784bcbe6bd4435aceb4e9ac13dd0a6662c40384efc999abc05282",
+     "core/environment": "3dd0697929c22761917b391660717312a3d162666f87d9836efb9913f52b3c2c"
+    }
+   }
+  },
+  {
+   "id": "evt_112f5ae4a001vZ8qVYMScHoGbQ",
+   "seq": 4,
+   "created": 1791319453258,
+   "type": "session.inbox.delivered.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "inboxID": "msg_evnt_00000000000000000000000004"
+   }
+  },
+  {
+   "id": "evt_112f5ae65001SopuDDi4cWJhHK",
+   "seq": 5,
+   "created": 1791319453285,
+   "type": "session.step.started.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5ae5b001RjXvCkyl45yq8e",
+    "agent": "build",
+    "model": {
+     "id": "anthropic/claude-haiku-4.5",
+     "providerID": "vercel"
+    },
+    "started": 1791319453283
+   }
+  },
+  {
+   "id": "evt_112f5b0f6001s5pg6324iMgs7i",
+   "seq": 6,
+   "created": 1791319453942,
+   "type": "session.text.started.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5ae5b001RjXvCkyl45yq8e",
+    "ordinal": 0
+   }
+  },
+  {
+   "id": "evt_112f5b1a9002Bbq4LIo1aNupCa",
+   "seq": 7,
+   "created": 1791319454121,
+   "type": "session.text.ended.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5ae5b001RjXvCkyl45yq8e",
+    "ordinal": 0,
+    "text": "I'll write a haiku about logs to haiku.txt and then read it back.",
+    "state": {
+     "generationId": "gen_01M49FBBQQKSPKPCMKWJCCTDP7"
+    }
+   }
+  },
+  {
+   "id": "evt_112f5b1b30013HoUIcblzMYLVG",
+   "seq": 8,
+   "created": 1791319454131,
+   "type": "session.tool.input.started.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5ae5b001RjXvCkyl45yq8e",
+    "id": "toolu_01DVYesiT2CXu6xnWWCwVnKH",
+    "name": "write_file"
+   }
+  },
+  {
+   "id": "evt_112f5b39b001XUceTuwJomXz7N",
+   "seq": 9,
+   "created": 1791319454620,
+   "type": "session.tool.input.ended.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5ae5b001RjXvCkyl45yq8e",
+    "id": "toolu_01DVYesiT2CXu6xnWWCwVnKH",
+    "text": "{\"path\": \"haiku.txt\", \"content\": \"Fallen branches rest\\nSilent records of the past\\nTime rings through the rings\\n\"}"
+   }
+  },
+  {
+   "id": "evt_112f5b3a2001WCf18RhLiW9Iw0",
+   "seq": 10,
+   "created": 1791319454626,
+   "type": "session.tool.called.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5ae5b001RjXvCkyl45yq8e",
+    "id": "toolu_01DVYesiT2CXu6xnWWCwVnKH",
+    "input": {
+     "path": "haiku.txt",
+     "content": "Fallen branches rest\nSilent records of the past\nTime rings through the rings\n"
+    },
+    "executed": false
+   }
+  },
+  {
+   "id": "evt_112f5b3ad001B1JMJ6sz7d3lwi",
+   "seq": 11,
+   "created": 1791319454637,
+   "type": "session.step.streamed.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5ae5b001RjXvCkyl45yq8e"
+   }
+  },
+  {
+   "id": "evt_112f5b3c8001swSMTMX4hv2HJa",
+   "seq": 12,
+   "created": 1791319454664,
+   "type": "session.tool.success.2",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5ae5b001RjXvCkyl45yq8e",
+    "id": "toolu_01DVYesiT2CXu6xnWWCwVnKH",
+    "content": [
+     {
+      "type": "text",
+      "text": "wrote 77 bytes to /workspace/haiku.txt"
+     }
+    ],
+    "metadata": {
+     "truncated": false
+    },
+    "executed": false
+   }
+  },
+  {
+   "id": "evt_112f5b3ca001kG9pVbfc34IVBO",
+   "seq": 13,
+   "created": 1791319454666,
+   "type": "session.step.ended.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5ae5b001RjXvCkyl45yq8e",
+    "finish": "tool-calls",
+    "rawFinish": "tool_use",
+    "providerState": {
+     "routing": {
+      "originalModelId": "anthropic/claude-haiku-4.5",
+      "resolvedProvider": "anthropic",
+      "fallbacksAvailable": [
+       "bedrock",
+       "vertexAnthropic",
+       "claudeaws"
+      ],
+      "planningReasoning": "System credentials planned for: anthropic, bedrock, vertexAnthropic. Total execution order: anthropic(system) → bedrock(system) → vertexAnthropic(system)",
+      "canonicalSlug": "anthropic/claude-haiku-4.5",
+      "finalProvider": "anthropic",
+      "modelAttemptCount": 1,
+      "modelAttempts": [
+       {
+        "canonicalSlug": "anthropic/claude-haiku-4.5",
+        "success": true,
+        "providerAttemptCount": 1,
+        "providerAttempts": [
+         {
+          "provider": "anthropic",
+          "credentialType": "system",
+          "success": true,
+          "startTime": 1791319453469,
+          "endTime": 1791319454552,
+          "providerRequestId": "req_011CfmdojaqweyFy4PEsUQCK",
+          "statusCode": 200,
+          "providerResponseId": "msg_011Cfmdok1tc4B79kaF4DQ6q"
+         }
+        ]
+       }
+      ],
+      "totalProviderAttemptCount": 1,
+      "affinity": {
+       "outcome": "no_pin"
+      },
+      "clientSessionId": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+      "clientSessionIdSource": "explicit"
+     },
+     "cost": "0.002283",
+     "marketCost": "0.002283",
+     "surchargeCost": "0.0001",
+     "gatewayCost": "0.002383",
+     "inferenceCost": "0.002283",
+     "inputInferenceCost": "0.001738",
+     "outputInferenceCost": "0.000545",
+     "providerAllowlistCost": "0.0001",
+     "generationId": "gen_01M49FBBQQKSPKPCMKWJCCTDP7",
+     "warnings": [
+      {
+       "type": "compatibility",
+       "feature": "maxOutputTokens",
+       "details": "maxOutputTokens 64000 exceeds the output token limit of 57000 tokens (max output plus thinking budget) for anthropic/claude-haiku-4.5 and was lowered to 57000."
+      }
+     ]
+    },
+    "cost": 0.002283,
+    "tokens": {
+     "input": 1738,
+     "output": 109,
+     "reasoning": 0,
+     "cache": {
+      "read": 0,
+      "write": 0
+     }
+    }
+   }
+  },
+  {
+   "id": "evt_112f5b3dd001S1250Jhw3hLuJy",
+   "seq": 14,
+   "created": 1791319454685,
+   "type": "session.step.started.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b3cf001Hn0NZRKVKxroFZ",
+    "agent": "build",
+    "model": {
+     "id": "anthropic/claude-haiku-4.5",
+     "providerID": "vercel"
+    },
+    "started": 1791319454684
+   }
+  },
+  {
+   "id": "evt_112f5b62f001AiYOkMYSv0wzsJ",
+   "seq": 15,
+   "created": 1791319455279,
+   "type": "session.text.started.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b3cf001Hn0NZRKVKxroFZ",
+    "ordinal": 0
+   }
+  },
+  {
+   "id": "evt_112f5b6fd002JOTfwdVdPsA512",
+   "seq": 16,
+   "created": 1791319455485,
+   "type": "session.text.ended.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b3cf001Hn0NZRKVKxroFZ",
+    "ordinal": 0,
+    "text": "Now let me read it back:",
+    "state": {
+     "generationId": "gen_01M49FBD0Z20EC5Y4HE0NY1YXF"
+    }
+   }
+  },
+  {
+   "id": "evt_112f5b701001iuDjgQfsBjhaLz",
+   "seq": 17,
+   "created": 1791319455489,
+   "type": "session.tool.input.started.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b3cf001Hn0NZRKVKxroFZ",
+    "id": "toolu_01TWku4yKoh3U7iSbF6jo1kv",
+    "name": "read_file"
+   }
+  },
+  {
+   "id": "evt_112f5b7b0001ezBb4k0qAdKJzm",
+   "seq": 18,
+   "created": 1791319455664,
+   "type": "session.tool.input.ended.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b3cf001Hn0NZRKVKxroFZ",
+    "id": "toolu_01TWku4yKoh3U7iSbF6jo1kv",
+    "text": "{\"path\": \"haiku.txt\"}"
+   }
+  },
+  {
+   "id": "evt_112f5b7b2001eIlSWZ0GUY3yHG",
+   "seq": 19,
+   "created": 1791319455666,
+   "type": "session.tool.called.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b3cf001Hn0NZRKVKxroFZ",
+    "id": "toolu_01TWku4yKoh3U7iSbF6jo1kv",
+    "input": {
+     "path": "haiku.txt"
+    },
+    "executed": false
+   }
+  },
+  {
+   "id": "evt_112f5b7b4001sugc0Wlufj0N7Q",
+   "seq": 20,
+   "created": 1791319455668,
+   "type": "session.step.streamed.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b3cf001Hn0NZRKVKxroFZ"
+   }
+  },
+  {
+   "id": "evt_112f5b7be001Y7ul6IJhI2cwVv",
+   "seq": 21,
+   "created": 1791319455678,
+   "type": "session.tool.success.2",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b3cf001Hn0NZRKVKxroFZ",
+    "id": "toolu_01TWku4yKoh3U7iSbF6jo1kv",
+    "content": [
+     {
+      "type": "text",
+      "text": "Fallen branches rest\nSilent records of the past\nTime rings through the rings\n"
+     }
+    ],
+    "metadata": {
+     "truncated": false
+    },
+    "executed": false
+   }
+  },
+  {
+   "id": "evt_112f5b7bf001FaumhCYc3DIxtG",
+   "seq": 22,
+   "created": 1791319455679,
+   "type": "session.step.ended.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b3cf001Hn0NZRKVKxroFZ",
+    "finish": "tool-calls",
+    "rawFinish": "tool_use",
+    "providerState": {
+     "routing": {
+      "originalModelId": "anthropic/claude-haiku-4.5",
+      "resolvedProvider": "anthropic",
+      "fallbacksAvailable": [
+       "bedrock",
+       "vertexAnthropic",
+       "claudeaws"
+      ],
+      "planningReasoning": "System credentials planned for: anthropic, bedrock, vertexAnthropic. Total execution order: anthropic(system) → bedrock(system) → vertexAnthropic(system)",
+      "canonicalSlug": "anthropic/claude-haiku-4.5",
+      "finalProvider": "anthropic",
+      "modelAttemptCount": 1,
+      "modelAttempts": [
+       {
+        "canonicalSlug": "anthropic/claude-haiku-4.5",
+        "success": true,
+        "providerAttemptCount": 1,
+        "providerAttempts": [
+         {
+          "provider": "anthropic",
+          "credentialType": "system",
+          "success": true,
+          "startTime": 1791319454772,
+          "endTime": 1791319455590,
+          "providerRequestId": "req_011CfmdoqEvReK3beaAivdq2",
+          "statusCode": 200,
+          "providerResponseId": "msg_011Cfmdoqck6nfaXcPvXZewT"
+         }
+        ]
+       }
+      ],
+      "totalProviderAttemptCount": 1,
+      "affinity": {
+       "outcome": "confirmed",
+       "pinnedProvider": "anthropic"
+      },
+      "clientSessionId": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+      "clientSessionIdSource": "explicit"
+     },
+     "cost": "0.002192",
+     "marketCost": "0.002192",
+     "surchargeCost": "0.0001",
+     "gatewayCost": "0.002292",
+     "inferenceCost": "0.002192",
+     "inputInferenceCost": "0.001872",
+     "outputInferenceCost": "0.00032",
+     "providerAllowlistCost": "0.0001",
+     "generationId": "gen_01M49FBD0Z20EC5Y4HE0NY1YXF",
+     "warnings": [
+      {
+       "type": "compatibility",
+       "feature": "maxOutputTokens",
+       "details": "maxOutputTokens 64000 exceeds the output token limit of 57000 tokens (max output plus thinking budget) for anthropic/claude-haiku-4.5 and was lowered to 57000."
+      }
+     ]
+    },
+    "cost": 0.002192,
+    "tokens": {
+     "input": 1872,
+     "output": 64,
+     "reasoning": 0,
+     "cache": {
+      "read": 0,
+      "write": 0
+     }
+    }
+   }
+  },
+  {
+   "id": "evt_112f5b7ce00107QsQwoDIwBs3n",
+   "seq": 23,
+   "created": 1791319455694,
+   "type": "session.step.started.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b7c3001lXTP7BpfSgWAM8",
+    "agent": "build",
+    "model": {
+     "id": "anthropic/claude-haiku-4.5",
+     "providerID": "vercel"
+    },
+    "started": 1791319455694
+   }
+  },
+  {
+   "id": "evt_112f5ba50001veHPzrkaDj6ewc",
+   "seq": 24,
+   "created": 1791319456336,
+   "type": "session.text.started.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b7c3001lXTP7BpfSgWAM8",
+    "ordinal": 0
+   }
+  },
+  {
+   "id": "evt_112f5bc48001SfF0x89k36l7hA",
+   "seq": 25,
+   "created": 1791319456840,
+   "type": "session.text.ended.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b7c3001lXTP7BpfSgWAM8",
+    "ordinal": 0,
+    "text": "Done! I've written a haiku about logs (as in fallen tree logs) to haiku.txt and read it back. The haiku captures the quiet nature of logs and how their rings tell the story of time passing.",
+    "state": {
+     "generationId": "gen_01M49FBE1ETDNGZJPP26ZMJKN7"
+    }
+   }
+  },
+  {
+   "id": "evt_112f5bc51001uywSi1ZZ586dXY",
+   "seq": 26,
+   "created": 1791319456849,
+   "type": "session.step.streamed.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b7c3001lXTP7BpfSgWAM8"
+   }
+  },
+  {
+   "id": "evt_112f5bc53001TBoxBQ761lQwI5",
+   "seq": 27,
+   "created": 1791319456851,
+   "type": "session.step.ended.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+    "assistantMessageID": "msg_112f5b7c3001lXTP7BpfSgWAM8",
+    "finish": "stop",
+    "rawFinish": "end_turn",
+    "providerState": {
+     "routing": {
+      "originalModelId": "anthropic/claude-haiku-4.5",
+      "resolvedProvider": "anthropic",
+      "fallbacksAvailable": [
+       "bedrock",
+       "vertexAnthropic",
+       "claudeaws"
+      ],
+      "planningReasoning": "System credentials planned for: anthropic, bedrock, vertexAnthropic. Total execution order: anthropic(system) → bedrock(system) → vertexAnthropic(system)",
+      "canonicalSlug": "anthropic/claude-haiku-4.5",
+      "finalProvider": "anthropic",
+      "modelAttemptCount": 1,
+      "modelAttempts": [
+       {
+        "canonicalSlug": "anthropic/claude-haiku-4.5",
+        "success": true,
+        "providerAttemptCount": 1,
+        "providerAttempts": [
+         {
+          "provider": "anthropic",
+          "credentialType": "system",
+          "success": true,
+          "startTime": 1791319455810,
+          "endTime": 1791319456811,
+          "providerRequestId": "req_011CfmdoudqK92PVL8oqeafd",
+          "statusCode": 200,
+          "providerResponseId": "msg_011Cfmdouxw9xjdZHHbApcCX"
+         }
+        ]
+       }
+      ],
+      "totalProviderAttemptCount": 1,
+      "affinity": {
+       "outcome": "confirmed",
+       "pinnedProvider": "anthropic"
+      },
+      "clientSessionId": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A",
+      "clientSessionIdSource": "explicit"
+     },
+     "cost": "0.002215",
+     "marketCost": "0.002215",
+     "surchargeCost": "0.0001",
+     "gatewayCost": "0.002315",
+     "inferenceCost": "0.002215",
+     "inputInferenceCost": "0.001965",
+     "outputInferenceCost": "0.00025",
+     "providerAllowlistCost": "0.0001",
+     "generationId": "gen_01M49FBE1ETDNGZJPP26ZMJKN7",
+     "warnings": [
+      {
+       "type": "compatibility",
+       "feature": "maxOutputTokens",
+       "details": "maxOutputTokens 64000 exceeds the output token limit of 57000 tokens (max output plus thinking budget) for anthropic/claude-haiku-4.5 and was lowered to 57000."
+      }
+     ]
+    },
+    "cost": 0.002215,
+    "tokens": {
+     "input": 1965,
+     "output": 50,
+     "reasoning": 0,
+     "cache": {
+      "read": 0,
+      "write": 0
+     }
+    }
+   }
+  },
+  {
+   "id": "evt_112f5bc56001xLRG1s1ab5yAIi",
+   "seq": 28,
+   "created": 1791319456854,
+   "type": "session.execution.succeeded.1",
+   "data": {
+    "sessionID": "ses_wrun_01M49FBAPHC1J9MZE7WNJEVG7A"
+   }
+  }
+ ],
+ "blobs": [
+  {
+   "hash": "5c8dae29775784bcbe6bd4435aceb4e9ac13dd0a6662c40384efc999abc05282",
+   "value": "Tue Oct 06 2026"
+  },
+  {
+   "hash": "3dd0697929c22761917b391660717312a3d162666f87d9836efb9913f52b3c2c",
+   "value": "<env>\n  Working directory: /tmp/harness-opencode/wrun_01M49FBAPHC1J9MZE7WNJEVG7A\n  Workspace root folder: /private/tmp/harness-opencode/wrun_01M49FBAPHC1J9MZE7WNJEVG7A\n  Is directory a git repo: no\n  Platform: darwin\n  Prefer /home/user/app/packages/harness-opencode/.sessions/wrun_01M49FBAPHC1J9MZE7WNJEVG7A/tmp/opencode over generic system temporary directories such as /tmp; it is pre-created and approved for external access.\n</env>"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@4.0.0/schema.json",
+  "changelog": [
+    "./changelog.mjs",
+    {
+      "repo": "vercel-labs/durable-harness"
+    }
+  ],
+  "commit": false,
+  "format": false,
+  "privatePackages": {
+    "version": false,
+    "tag": false
+  },
+  "fixed": [],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": []
+}

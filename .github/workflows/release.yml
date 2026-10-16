@@ -1,0 +1,233 @@
+name: Release
+
+# Publishes durable-harness to npm with changesets (docs/releasing.md).
+# Adapted from vercel/workflow's .github/workflows/release.yml.
+
+on:
+  push:
+    branches:
+      - main
+  # Re-run the release by hand: a "Version Packages" PR merged by the default
+  # GITHUB_TOKEN's bot does not trigger this workflow, and neither does a retry
+  # after a failed publish.
+  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      # npm trusted publishing: `pnpm publish` exchanges the job's OIDC token
+      # for a short-lived npm token, so the repo holds no npm secret, and npm
+      # adds a provenance attestation. The same OIDC token is what the release
+      # PR's token broker accepts (below).
+      id-token: write
+    env:
+      WORKFLOW_NO_UPDATE_CHECK: '1'
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - uses: pnpm/action-setup@v6 # the version comes from packageManager
+
+      # registry-url configures npm publishing. Node 24 ships an npm with
+      # trusted publishing (11.5.1 or later).
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: pnpm install --frozen-lockfile
+
+      # durable-harness stays on 0.0.x: every changeset is a patch
+      # (scripts/check-changesets.mjs; the CI workflow runs it on pull requests).
+      - name: Check the release line
+        run: pnpm check:changesets
+
+      # The release gate (docs/workspaces.md §6 rule 2; scripts/check-dist.mjs):
+      # it fails while an entry still holds a stub, while claudeCodeHarness() or
+      # codexHarness() can be built without a branded machine, while a published
+      # entry carries the local stand-in, without the shipped relay bundle, and
+      # while the relay reports modelAuth: false. `pnpm ci:publish` runs it again
+      # on the build it publishes.
+      - name: Release gate
+        env:
+          DH_RELEASE_GATE: '1'
+        run: pnpm --filter durable-harness build && pnpm --filter durable-harness check-dist
+
+      # The first version is published by hand, because npm lets a package
+      # trust this workflow only once the package exists (docs/releasing.md).
+      # Until then this job publishes nothing and only keeps the release PR
+      # current. Anything but a 200 or a 404 from the registry fails the job,
+      # rather than skipping a publish that should have happened.
+      - name: Is durable-harness on npm yet?
+        id: npm
+        run: |
+          status=$(curl -s -o /dev/null -w '%{http_code}' -H 'accept: application/json' https://registry.npmjs.org/durable-harness)
+          case "$status" in
+            200) echo "exists=true" >> "$GITHUB_OUTPUT" ;;
+            404)
+              echo "exists=false" >> "$GITHUB_OUTPUT"
+              echo "::notice::durable-harness is not on npm yet, so nothing is published from here. Publish the first version by hand and configure the trusted publisher (docs/releasing.md)."
+              ;;
+            *) echo "::error::GET https://registry.npmjs.org/durable-harness returned $status"; exit 1 ;;
+          esac
+
+      # changesets/action v2 pairs with @changesets/cli v3 (it refuses a v2
+      # CLI). It pushes the release commit and tags through the GitHub API, so
+      # they are signed with GitHub's key, as this repo's rulesets require.
+      #
+      # These are its select-mode, publish and version sub-actions rather than
+      # the combined `changesets/action`, which publishes only when no
+      # changesets are pending: under that rule a "Version Packages" PR merged
+      # without every pending changeset strands its versions (it happened to
+      # vercel/workflow's 5.2.0). So the registry decides whether to publish,
+      # and the release PR is still refreshed in the same run.
+      - name: Select release mode
+        id: mode
+        uses: changesets/action/select-mode@8488615a623b1b9c987934bb89eae8af6a946ac1 # v2.1.1
+
+      # `select-mode` asks the registry only when no changesets are pending.
+      # Otherwise ask it here: `publish-plan` is the diff `changeset publish`
+      # acts on, so it is empty on every commit except one a stale release PR
+      # left behind. A registry error here must not turn an ordinary push red;
+      # the verify step below retries and still reports any version missing.
+      - name: Find versions on this commit that are not on npm
+        id: unpublished
+        if: steps.npm.outputs.exists == 'true' && steps.mode.outputs.mode != 'publish'
+        continue-on-error: true
+        run: |
+          pnpm exec changeset publish-plan --output "$RUNNER_TEMP/publish-plan.json"
+          missing=$(jq -r '[.plan[][] | select(.kind == "publish") | "\(.name)@\(.version)"] | join(" ")' "$RUNNER_TEMP/publish-plan.json")
+          if [ -n "$missing" ]; then
+            echo "::warning::Changesets are pending, but these versions on this commit were never published. Publishing them now: $missing"
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # The action learns what the publish script published from an NDJSON file
+      # it names in `CHANGESETS_OUTPUT`, which `pnpm ci:publish` inherits and
+      # passes on to `changeset publish`; without it the action sees nothing
+      # published and skips the release. It tags `durable-harness@<version>`
+      # and creates a GitHub Release from the CHANGELOG entry.
+      - name: Publish to npm
+        id: publish
+        if: steps.npm.outputs.exists == 'true' && (steps.mode.outputs.mode == 'publish' || steps.unpublished.outputs.stale == 'true')
+        uses: changesets/action/publish@8488615a623b1b9c987934bb89eae8af6a946ac1 # v2.1.1
+        with:
+          script: pnpm ci:publish
+          create-github-releases: true
+
+      # Cross-check every publishable manifest on this commit against the
+      # registry, whatever the publish step's outcome, so the job says exactly
+      # what is missing.
+      - name: Verify every package version on this commit is on npm
+        if: ${{ !cancelled() && steps.npm.outputs.exists == 'true' && steps.mode.outcome == 'success' }}
+        run: node scripts/check-published.mjs
+
+      # The version sub-action commits every file that differs from this
+      # commit, untracked ones included, to the release PR branch. So it runs
+      # last, on a tree reset to this commit: a publish above leaves build
+      # output behind. It runs even when an earlier step failed, so a failed
+      # publish does not also leave the release PR behind main.
+      - name: Reset the working tree to this commit
+        id: reset
+        if: ${{ !cancelled() && steps.mode.outputs.mode == 'version' }}
+        run: git reset --hard HEAD && git clean -fd
+
+      # The release PR is opened with a token from a GitHub token broker once
+      # the repository variable GH_STS_RELEASE is `true`, and with GITHUB_TOKEN
+      # until then. The broker exchanges this job's OIDC token for a one-hour
+      # GitHub App token scoped to this repository with contents: write and
+      # pull_requests: write, under a policy that matches this file on
+      # refs/heads/main (push or workflow_dispatch). A PR the app opens or
+      # updates runs its own CI. One that GITHUB_TOKEN opens does not (GitHub
+      # does not trigger workflows from its events): push to its branch, or
+      # close and reopen it, to run CI before merging.
+      #
+      # The broker is configured with repository variables: GH_STS_URL (its
+      # base URL, which is also the OIDC audience) and GH_STS_POLICY (the
+      # policy id). Leave GH_STS_RELEASE unset until the policy is deployed: a
+      # broker may count denied requests against the runner's IP. While it is
+      # set, a failed exchange warns and the PR is opened with GITHUB_TOKEN, as
+      # before. The step asks for an OIDC token with the broker's audience,
+      # selects the policy by id, masks the token, accepts it only for this
+      # owner, repository and policy, and revokes it when the job ends (last
+      # step).
+      - name: Mint a token for the release pull request
+        id: gh-sts
+        if: ${{ !cancelled() && steps.reset.outcome == 'success' && vars.GH_STS_RELEASE == 'true' }}
+        env:
+          GH_STS_URL: ${{ vars.GH_STS_URL }}
+          GH_STS_POLICY: ${{ vars.GH_STS_POLICY }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          set +e # every failure below falls back to GITHUB_TOKEN
+          fall_back() {
+            echo "::warning::Token broker: $1 The release pull request is opened with GITHUB_TOKEN instead."
+            exit 0
+          }
+          [ -n "$GH_STS_URL" ] && [ -n "$GH_STS_POLICY" ] || fall_back "set the GH_STS_URL and GH_STS_POLICY variables."
+          audience=${GH_STS_URL#https://}
+          audience=${audience%%/*}
+          [ -n "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ] || fall_back "this job has no OIDC token (id-token: write)."
+          oidc=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=$audience" | jq -r '.value // empty')
+          [ -n "$oidc" ] || fall_back "no OIDC token for the broker's audience."
+          echo "::add-mask::$oidc"
+          response="$RUNNER_TEMP/gh-sts.json"
+          status=$(jq -nc --arg policy "$GH_STS_POLICY" --arg owner "$OWNER" --arg repo "$REPO" \
+              '{policy: $policy, owner: $owner, repo: $repo, permissions: {contents: "write", pull_requests: "write"}}' |
+            curl -sS -o "$response" -w '%{http_code}' -X POST "${GH_STS_URL%/}/token" \
+              -H "Authorization: Bearer $oidc" -H 'Content-Type: application/json' -H 'Accept: application/json' \
+              --data-binary @-)
+          token=$(jq -r '.token // empty' "$response" 2>/dev/null)
+          [ -z "$token" ] || echo "::add-mask::$token"
+          code=$(jq -r '.code // empty' "$response" 2>/dev/null)
+          scoped=$(jq -r --arg policy "$GH_STS_POLICY" --arg owner "$OWNER" --arg repo "$REPO" \
+            '.owner == $owner and .policy == $policy and ((.repo == $repo and .repos == null) or (.repo == null and .repos == [$repo]))' \
+            "$response" 2>/dev/null)
+          rm -f "$response"
+          [ "$status" = 200 ] || fall_back "the exchange returned HTTP ${status:-000}${code:+ ($code)}."
+          [ -n "$token" ] && [ "$scoped" = true ] || fall_back "the exchange returned no token, or one for another owner, repository or policy."
+          echo "token=$token" >> "$GITHUB_OUTPUT"
+          echo "Minted a token under policy $GH_STS_POLICY."
+
+      - name: Create or update the release pull request
+        if: ${{ !cancelled() && steps.reset.outcome == 'success' }}
+        uses: changesets/action/version@8488615a623b1b9c987934bb89eae8af6a946ac1 # v2.1.1
+        with:
+          script: pnpm ci:version
+          github-token: ${{ steps.gh-sts.outputs.token || github.token }}
+
+      # 401 and 404 mean already gone.
+      - name: Revoke the release pull request's token
+        if: ${{ always() && steps.gh-sts.outputs.token != '' }}
+        env:
+          GH_STS_TOKEN: ${{ steps.gh-sts.outputs.token }}
+        run: |
+          status=$(curl -sS -o /dev/null -w '%{http_code}' -X DELETE "$GITHUB_API_URL/installation/token" \
+            -H "Authorization: Bearer $GH_STS_TOKEN" -H 'Accept: application/vnd.github+json' \
+            -H 'X-GitHub-Api-Version: 2022-11-28') || status=000
+          case "$status" in
+            204 | 401 | 404) echo "Revoked the token." ;;
+            *) echo "::warning::Revoking the token returned HTTP $status; it expires within the hour." ;;
+          esac

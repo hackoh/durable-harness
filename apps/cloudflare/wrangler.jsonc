@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "durable-harness-cloudflare",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-09-01",
+  // nodejs_compat: process.env, node:async_hooks (the World's local-run
+  // context), Buffer for pi-ai and just-bash. (ctx.exports, which the World's
+  // run object uses for StepRunner, is on by default since 2025-11-17.)
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    // Runs are pinned to the build that created them (see src/sessions.ts).
+    "HARNESS_DEPLOYMENT_ID": "dpl_harness_cloudflare_v1",
+    "HARNESS_MODEL": "anthropic/claude-haiku-4.5",
+    "HARNESS_CONFIRM_MS": "4000",
+    "HARNESS_DEBUG": "0",
+    "WORKFLOW_CLOUDFLARE_DEBUG": "0"
+  },
+  "durable_objects": {
+    "bindings": [
+      { "name": "WORKFLOW_RUNS", "class_name": "RunObject" },
+      { "name": "WORKFLOW_TOKENS", "class_name": "TokenObject" },
+      { "name": "WORKFLOW_STREAMS", "class_name": "StreamObject" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RunObject", "TokenObject", "StreamObject"] }],
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,6 @@
+# Secrets for wrangler dev (the AI Gateway credential): never commit.
+.dev.vars
+.dev.vars.*
+# Local Durable Object storage and wrangler's build cache.
+.wrangler
+.drill

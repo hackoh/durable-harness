@@ -1,0 +1,83 @@
+packages:
+  - packages/*
+  - apps/*
+allowBuilds:
+  '@google/genai': false
+  '@mongodb-js/zstd': false
+  '@parcel/watcher': false
+  '@swc/core': false
+  cbor-extract: true
+  esbuild: true
+  msgpackr-extract: false
+  node-liblzma: false
+  protobufjs: false
+  tree-sitter-bash: false
+  tree-sitter-powershell: false
+  workerd: true
+minimumReleaseAgeExclude:
+  - '@workflow/*'
+  - eve
+  - libfx
+  - '@earendil-works/*'
+  - '@ai-sdk/gateway@4.0.104'
+  - ai@7.0.128
+# Workflow SDK: the npm release of 2026-10-12 (workflow, @workflow/core and
+# @workflow/world-vercel 5.2.1, @workflow/world-local 5.1.1, @workflow/world,
+# @workflow/world-postgres, @workflow/next and @workflow/cli 5.0.4,
+# @workflow/utils 5.0.2), exactly. It carries route-agnostic queue delivery
+# (vercel/workflow#4835: durable-harness's own queue namespace and route),
+# world-local's in-band writer fence across processes (#4834), and
+# world-vercel declaring the fence (#4833). Every @workflow/* package is
+# overridden too, so one copy of each is installed (eve's and the CLI's
+# dependencies included).
+catalog:
+  # libfx with durability (vercel-labs/fx#1180), exactly. Only dev builds have
+  # it (the 0.0.13 stable has no durable.js); this is the newest (dist-tag dev,
+  # 2026-10-09). Every fx lane, the fx (libfx durable) harness, the CLI check
+  # and the examples use this one.
+  libfx: 0.0.13-dev.1432.g1df91f0b4ebf
+  '@workflow/astro': 5.0.4
+  '@workflow/builders': 5.0.4
+  '@workflow/cli': 5.0.4
+  '@workflow/core': 5.2.1
+  '@workflow/errors': 5.0.4
+  '@workflow/nest': 5.1.2
+  '@workflow/next': 5.0.4
+  '@workflow/nitro': 5.0.4
+  '@workflow/nuxt': 5.0.4
+  '@workflow/rollup': 5.0.4
+  '@workflow/serde': 5.0.0
+  '@workflow/sveltekit': 5.0.4
+  '@workflow/swc-plugin': 5.0.1
+  '@workflow/typescript-plugin': 5.0.0
+  '@workflow/utils': 5.0.2
+  '@workflow/vite': 5.0.4
+  '@workflow/web': 5.0.4
+  '@workflow/world': 5.0.4
+  '@workflow/world-local': 5.1.1
+  '@workflow/world-postgres': 5.0.4
+  '@workflow/world-vercel': 5.2.1
+  'workflow': 5.2.1
+overrides:
+  '@workflow/astro': 'catalog:'
+  '@workflow/builders': 'catalog:'
+  '@workflow/cli': 'catalog:'
+  '@workflow/core': 'catalog:'
+  '@workflow/errors': 'catalog:'
+  '@workflow/nest': 'catalog:'
+  '@workflow/next': 'catalog:'
+  '@workflow/nitro': 'catalog:'
+  '@workflow/nuxt': 'catalog:'
+  '@workflow/rollup': 'catalog:'
+  '@workflow/serde': 'catalog:'
+  '@workflow/sveltekit': 'catalog:'
+  '@workflow/swc-plugin': 'catalog:'
+  '@workflow/typescript-plugin': 'catalog:'
+  '@workflow/utils': 'catalog:'
+  '@workflow/vite': 'catalog:'
+  '@workflow/web': 'catalog:'
+  '@workflow/world': 'catalog:'
+  '@workflow/world-local': 'catalog:'
+  '@workflow/world-postgres': 'catalog:'
+  '@workflow/world-vercel': 'catalog:'
+  'workflow': 'catalog:'

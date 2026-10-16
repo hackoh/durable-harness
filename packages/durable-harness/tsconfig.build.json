@@ -1,0 +1,27 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "harness-world": ["../harness-world/src/index.ts"],
+      "harness-world/*": ["../harness-world/src/*.ts"],
+      "harness-world-claude-code": ["../harness-claude-code/src/index.ts"],
+      "harness-world-claude-code/*": ["../harness-claude-code/src/*.ts"],
+      "harness-world-codex": ["../harness-codex/src/index.ts"],
+      "harness-world-codex/*": ["../harness-codex/src/*.ts"],
+      "harness-world-opencode": ["../harness-opencode/src/index.ts"],
+      "harness-world-opencode/*": ["../harness-opencode/src/*.ts"],
+      "harness-world-pi": ["../harness-pi/src/index.ts"],
+      "harness-world-process": ["../harness-process/src/index.ts"],
+      "harness-world-process/*": ["../harness-process/src/*.ts"],
+      "harness-world-sandbox/files": ["../harness-sandbox/src/files.ts"],
+      "harness-world-hands": ["../harness-hands/src/index.ts"],
+      "harness-world-hands/runtime": ["../harness-hands/src/runtime-exports.ts"],
+      "harness-world-hands/workspace-runtime": ["../harness-hands/src/runtime.ts"],
+      "harness-world-hands/*": ["../harness-hands/src/*.ts"],
+      "pi-world": ["../pi-world/src/index.ts"],
+      "pi-world/*": ["../pi-world/src/*.ts"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts"]
+}

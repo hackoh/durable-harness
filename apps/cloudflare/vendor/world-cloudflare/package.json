@@ -1,0 +1,20 @@
+{
+  "name": "@workflow/world-cloudflare",
+  "version": "0.0.0-pr4682",
+  "private": true,
+  "description": "vercel/workflow#4682 (draft): a Workflow World where each run is a Cloudflare Durable Object. Vendored build; see SOURCE.json and scripts/vendor-world-cloudflare.mjs.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./lib/index.js"
+    }
+  },
+  "dependencies": {
+    "@workflow/errors": "5.0.2",
+    "@workflow/utils": "5.0.1",
+    "@workflow/world": "5.0.2",
+    "ulid": "^3.0.1"
+  }
+}

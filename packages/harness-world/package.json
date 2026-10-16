@@ -1,0 +1,35 @@
+{
+  "name": "harness-world",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Run agent harnesses directly on a Workflow SDK World: the session is a run, its transcript is the event log.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./vercel-channel": "./src/vercel-channel.ts",
+    "./codec": "./src/codec.ts",
+    "./names": "./src/names.ts",
+    "./authorize": "./src/authorize.ts",
+    "./marks": "./src/marks.ts",
+    "./streams": "./src/streams.ts",
+    "./anchor": "./src/anchor.ts",
+    "./fence": "./src/fence.ts",
+    "./queue": "./src/queue.ts",
+    "./testing": "./src/testing/index.ts",
+    "./instrumentation": "./src/instrumentation.ts",
+    "./errors": "./src/errors.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@workflow/world": "catalog:",
+    "devalue": "^5.1.1",
+    "ulid": "^3.0.1"
+  },
+  "devDependencies": {
+    "@workflow/world-local": "catalog:",
+    "@workflow/world-postgres": "catalog:"
+  }
+}

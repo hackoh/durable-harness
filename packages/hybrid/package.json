@@ -1,0 +1,32 @@
+{
+  "name": "harness-world-hybrid",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The hybrid session (Pi or fx): one harness definition shared by the browser, Vercel Function and Sandbox lanes.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./sandbox": "./src/sandbox.ts",
+    "./gateway": "./src/gateway.ts",
+    "./testing": "./src/testing.ts",
+    "./prewarm-pool": "./src/prewarm-pool.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "1.0.4",
+    "@earendil-works/pi-ai": "1.0.4",
+    "@vercel/sandbox": "3.7.0",
+    "harness-world": "workspace:*",
+    "harness-world-fx": "workspace:*",
+    "harness-world-hands": "workspace:*",
+    "harness-world-pi": "workspace:*",
+    "typebox": "1.3.27"
+  },
+  "devDependencies": {
+    "@workflow/world-local": "catalog:",
+    "libfx": "catalog:"
+  }
+}

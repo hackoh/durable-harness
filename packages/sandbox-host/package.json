@@ -1,0 +1,37 @@
+{
+  "name": "harness-sandbox-host",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The in-VM daemon of the sandbox lane: Pi/fx driven inside a Vercel Sandbox VM, with direct World (WS) and AI Gateway access.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./local-sandbox": "./src/local-sandbox.ts",
+    "./start": "./src/start.ts", "./image": "./src/image.ts", "./wake": "./src/wake.ts", "./prewarm": "./src/prewarm.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "node scripts/build.mjs",
+    "image": "node --experimental-strip-types --no-warnings scripts/image.mjs --scope vercel-labs",
+    "image:push": "node --experimental-strip-types --no-warnings scripts/image.mjs --scope vercel-labs --push",
+    "bench:start": "node --env-file=../../apps/demo/.env.local --experimental-transform-types --no-warnings scripts/bench-start.ts"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "1.0.4",
+    "@workflow/world": "catalog:",
+    "@workflow/world-vercel": "catalog:",
+    "harness-world": "workspace:*",
+    "harness-world-bench": "workspace:*",
+    "harness-world-fx": "workspace:*",
+    "harness-world-hands": "workspace:*",
+    "harness-world-hybrid": "workspace:*",
+    "harness-world-pi": "workspace:*",
+    "harness-world-remote": "workspace:*",
+    "libfx": "catalog:"
+  },
+  "devDependencies": {
+    "@workflow/world-local": "catalog:",
+    "esbuild": "0.28.2"
+  }
+}

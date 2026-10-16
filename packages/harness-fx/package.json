@@ -1,0 +1,25 @@
+{
+  "name": "harness-world-fx",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "fx (libfx) on a Workflow World.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./durable": "./src/durable.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "harness-world": "workspace:*"
+  },
+  "peerDependencies": {
+    "libfx": "catalog:"
+  },
+  "devDependencies": {
+    "@workflow/world-local": "catalog:",
+    "libfx": "catalog:"
+  }
+}

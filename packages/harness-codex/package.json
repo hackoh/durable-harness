@@ -1,0 +1,30 @@
+{
+  "name": "harness-world-codex",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Codex (codex app-server) on harness-world, in the session's Vercel Sandbox VM: a kernel Harness whose rollout is mirrored into the run's log and whose only tools, by default, are HostTools.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./rollout": "./src/rollout.ts",
+    "./binary": "./src/binary.ts",
+    "./testing/fake-app-server": "./test/fake-app-server.mjs"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "example": "tsx examples/local.ts"
+  },
+  "dependencies": {
+    "@workflow/world": "catalog:",
+    "harness-world": "workspace:*",
+    "harness-world-process": "workspace:*",
+    "harness-world-sandbox": "workspace:*"
+  },
+  "devDependencies": {
+    "@openai/codex": "0.160.0",
+    "@vercel/sandbox": "3.7.0",
+    "@workflow/world-local": "catalog:",
+    "harness-world-hands": "workspace:*"
+  }
+}

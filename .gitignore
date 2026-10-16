@@ -1,0 +1,23 @@
+node_modules
+dist
+.next
+.workflow-data
+.env*.local
+*.log
+.vercel
+tsconfig.tsbuildinfo
+.next-*
+apps/demo/public/browser
+.workflow-data-*
+# Process harnesses' per-session directories (harness-world-process).
+.sessions
+next-env.d.ts
+# The Workflow CLI check's data directories and report (CLI_CHECK_OUT in CI).
+.cli-check*
+# Organisation-specific patterns for scripts/check-public.mjs (CONTRIBUTING.md).
+.public-denylist
+# Benchmark output (scripts/bench.mjs --out).
+bench/results
+# Local working notes, never committed.
+docs/brainstorms/
+docs/transcripts.html

@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: world
+      POSTGRES_PASSWORD: world
+      POSTGRES_DB: world
+    ports:
+      - '5433:5432'

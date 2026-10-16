@@ -1,0 +1,22 @@
+{
+  "name": "@harness-world/world-browser",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A Workflow World that lives in a browser tab: IndexedDB storage, an in-tab durable queue, cross-tab leader election.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@workflow/world": "catalog:",
+    "ulid": "^3.0.1"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.0.0",
+    "harness-world": "workspace:*"
+  }
+}

@@ -1,0 +1,53 @@
+/* Metric-matched fallbacks, so the swap to Geist moves nothing. */
+/* Tuned against Geist's regular weight (13px running text measures within
+   1px); the one bold label with an intrinsic width (the brand) sits in a
+   fixed-width slot, so bold's different fit moves nothing either. Menlo
+   Regular and Courier New match Geist Mono's advance at 100%. */
+@font-face { font-family: 'Geist Fallback'; src: local('Arial'), local('ArialMT'); size-adjust: 102.5%; ascent-override: 92%; descent-override: 23%; line-gap-override: 0%; }
+@font-face { font-family: 'Geist Mono Fallback'; src: local('Menlo Regular'), local('Menlo-Regular'), local('Courier New'), local('CourierNewPSMT'); size-adjust: 100%; }
+
+:root {
+  color-scheme: light dark;
+  --paper: #ffffff;
+  --wash: #fafafa;
+  --hairline: #ebebeb;
+  --ink: #171717;
+  --graphite: #666666;
+  --pencil: #8f8f8f;
+  --lane-tab: #0068d6;
+  --lane-fn: #7820bc;
+  --lane-box: #0b7b6f;
+  --crash: #d8262f;
+  --crash-tint: #fef0ef;
+  --armed: #a35200;
+  --armed-tint: #fff4d6;
+  --focus: var(--ink);
+  --tint: 10%;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--hairline);
+  --sans: 'Geist Variable', 'Geist Fallback', system-ui, sans-serif;
+  --mono: 'Geist Mono Variable', 'Geist Mono Fallback', ui-monospace, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #000000;
+    --wash: #111111;
+    --hairline: #242424;
+    --ink: #ededed;
+    --graphite: #a1a1a1;
+    --pencil: #707070;
+    --lane-tab: #52a8ff;
+    --lane-fn: #bf7af0;
+    --lane-box: #2bc4b0;
+    --crash: #ff6166;
+    --crash-tint: #2a0e0e;
+    --armed: #f5a623;
+    --armed-tint: #2a1f0a;
+    --tint: 16%;
+    --shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--hairline);
+  }
+}
+
+[data-lane='browser'] { --lane: var(--lane-tab); }
+[data-lane='function'] { --lane: var(--lane-fn); }
+[data-lane='sandbox'] { --lane: var(--lane-box); }

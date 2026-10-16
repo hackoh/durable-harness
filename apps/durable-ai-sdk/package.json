@@ -1,0 +1,27 @@
+{
+  "name": "durable-ai-sdk",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The AI SDK's ToolLoopAgent made durable on a Workflow World: model calls and tool calls are effects in the run's event log.",
+  "exports": {
+    ".": "./src/harness.ts",
+    "./tools": "./src/tools.ts",
+    "./scripted": "./src/scripted.ts"
+  },
+  "scripts": {
+    "cli": "tsx src/cli.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ai-sdk/provider": "4.0.22",
+    "@workflow/world": "catalog:",
+    "@workflow/world-local": "catalog:",
+    "ai": "7.0.128",
+    "durable-harness": "workspace:*",
+    "harness-world": "workspace:*",
+    "harness-world-hands": "workspace:*",
+    "zod": "4.5.4"
+  }
+}

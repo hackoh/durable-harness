@@ -1,0 +1,20 @@
+{
+  "repository": "vercel/workflow",
+  "pullRequest": 4682,
+  "package": "packages/world-cloudflare",
+  "commit": "a555966986af83b94cb77d1d427dfdb18a2732cc",
+  "dirty": false,
+  "inputs": [
+    "packages/world-sim/dist/store.js",
+    "src/encryption.ts",
+    "src/index.ts",
+    "src/quickjs.ts",
+    "src/rpc.ts",
+    "src/run-object.ts",
+    "src/runtime.ts",
+    "src/step-runner.ts",
+    "src/stream-object.ts",
+    "src/token-object.ts",
+    "src/world.ts"
+  ]
+}

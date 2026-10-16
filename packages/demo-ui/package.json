@@ -1,0 +1,35 @@
+{
+  "name": "harness-world-demo-ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The demo UI: one page (a brain on the server, in this tab, or moving between them, and the hands of your choice), driven by a DemoClient per brain.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./view": "./src/fold-view.ts",
+    "./pi-view": "./src/pi-view.ts",
+    "./fx-view": "./src/fx-view.ts",
+    "./styles.css": "./src/styles.css",
+    "./axes": "./src/axes.ts"
+  },
+  "dependencies": {
+    "harness-world": "workspace:*",
+    "harness-world-bench": "workspace:*",
+    "harness-world-hands": "workspace:*",
+    "harness-world-process": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "@types/react-dom": "^19.1.0"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  }
+}

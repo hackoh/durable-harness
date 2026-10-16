@@ -1,0 +1,36 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "app/.well-known/durable-harness/v1/flow/route.ts": {
+      "maxDuration": 800,
+      "experimentalTriggers": [
+        {
+          "type": "queue/v2beta",
+          "topic": "__harness_wkf_workflow_*",
+          "retryAfterSeconds": 5,
+          "initialDelaySeconds": 0
+        }
+      ]
+    },
+    "app/api/libfx/route.ts": {
+      "maxDuration": 60,
+      "experimentalTriggers": [
+        {
+          "type": "queue/v2beta",
+          "topic": "__libfx_wkf_workflow_session"
+        }
+      ]
+    },
+    "app/api/drill/route.ts": {
+      "maxDuration": 790
+    },
+    "app/api/sessions/*/live/route.ts": {
+      "supportsCancellation": true
+    }
+  },
+  "git": {
+    "deploymentEnabled": {
+      "changeset-release/main": false
+    }
+  }
+}

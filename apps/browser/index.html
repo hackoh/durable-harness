@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>durable-harness</title>
+    <meta name="description" content="Durable agent sessions on Vercel Workflow: crash the process and the session resumes from its log." />
+    <link rel="preload" href="%BASE_URL%fonts/geist.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="%BASE_URL%fonts/geist-mono.woff2" as="font" type="font/woff2" crossorigin />
+    <style>
+      @font-face { font-family: 'Geist Variable'; src: url('%BASE_URL%fonts/geist.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+      @font-face { font-family: 'Geist Mono Variable'; src: url('%BASE_URL%fonts/geist-mono.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+      /* The Vercel wordmark (vendored from vercel.com/design.md), masked with currentColor by the page's CSS. */
+      :root { --vercel-wordmark: url('%BASE_URL%vercel-wordmark.svg'); }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

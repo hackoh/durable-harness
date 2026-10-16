@@ -1,0 +1,7 @@
+{
+  "name": "dh-sandbox-probe",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "24.x" },
+  "dependencies": { "@vercel/sandbox": "3.7.0" }
+}

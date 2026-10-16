@@ -1,0 +1,32 @@
+{
+  "name": "harness-world-sandbox",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The sandbox tier: a session's Vercel Sandbox VM and Drive, the in-VM relay, the driver-side link and the machine built on it, and the probes that check the platform behaviour it relies on.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./names": "./src/names.ts",
+    "./files": "./src/files.ts",
+    "./cli": "./src/cli.ts",
+    "./testing/fake-api": "./test/fake-api.ts",
+    "./testing/local-machine": "./test/local-machine.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vercel/sandbox": "3.7.0",
+    "harness-world": "workspace:*",
+    "harness-world-process": "workspace:*",
+    "harness-world-remote": "workspace:*",
+    "ws": "8.21.3"
+  },
+  "devDependencies": {
+    "@types/ws": "8.18.2",
+    "@workflow/world-local": "catalog:",
+    "esbuild": "0.28.2",
+    "harness-world-hands": "workspace:*"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "durable-fx-example",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The smallest deployable durable fx agent: libfx's createFxAgent, its sessions in Vercel's World.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "cli": "tsx scripts/cli.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "durable-harness": "workspace:*",
+    "libfx": "catalog:",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0"
+  }
+}

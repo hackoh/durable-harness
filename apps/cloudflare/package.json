@@ -1,0 +1,36 @@
+{
+  "name": "harness-cloudflare",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The harnesses on the Cloudflare Durable Objects World (vercel/workflow#4682): a Worker where each session is a Durable Object that stores and drives it.",
+  "scripts": {
+    "dev": "wrangler dev --persist-to .wrangler/state",
+    "vendor:world": "node scripts/vendor-world-cloudflare.mjs",
+    "drill": "node scripts/drill.mjs",
+    "test:cf": "vitest run --config vitest.config.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@earendil-works/chord": "1.0.4",
+    "@earendil-works/pi-agent-core": "1.0.4",
+    "@earendil-works/pi-ai": "1.0.4",
+    "@earendil-works/pi-durable": "1.0.4",
+    "@workflow/world": "catalog:",
+    "@workflow/world-cloudflare": "file:./vendor/world-cloudflare",
+    "ai": "7.0.128",
+    "durable-ai-sdk": "workspace:*",
+    "harness-world": "workspace:*",
+    "harness-world-fx": "workspace:*",
+    "harness-world-hands": "workspace:*",
+    "harness-world-pi": "workspace:*",
+    "libfx": "catalog:",
+    "pi-world": "workspace:*",
+    "ulid": "^3.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1",
+    "wrangler": "4.146.0",
+    "vitest": "^3.2.0"
+  }
+}

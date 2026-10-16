@@ -1,0 +1,21 @@
+{
+  "name": "harness-world-bench",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Latency benchmark for durable vs raw harness lanes: scenarios, runner, stats. DOM-free: runs in the /bench page and headless in Node.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./raw-turn": "./src/raw-turn.ts",
+    "./replay": "./src/replay.ts",
+    "./eve": "./src/eve.ts",
+    "./stats": "./src/stats.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "harness-world": "workspace:*"
+  }
+}

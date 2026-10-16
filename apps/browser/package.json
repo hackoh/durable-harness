@@ -1,0 +1,35 @@
+{
+  "name": "browser",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "fonts": "cp node_modules/@fontsource-variable/geist/files/geist-latin-wght-normal.woff2 public/fonts/geist.woff2 && cp node_modules/@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2 public/fonts/geist-mono.woff2"
+  },
+  "dependencies": {
+    "@earendil-works/pi-ai": "1.0.4",
+    "@fontsource-variable/geist": "5.3.0",
+    "@fontsource-variable/geist-mono": "5.3.0",
+    "@harness-world/world-browser": "workspace:*",
+    "harness-world": "workspace:*",
+    "harness-world-bench": "workspace:*",
+    "harness-world-demo-ui": "workspace:*",
+    "harness-world-fx": "workspace:*",
+    "harness-world-hands": "workspace:*",
+    "harness-world-hybrid": "workspace:*",
+    "harness-world-pi": "workspace:*",
+    "harness-world-remote": "workspace:*",
+    "libfx": "catalog:",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "vite": "^8.3.1"
+  }
+}
