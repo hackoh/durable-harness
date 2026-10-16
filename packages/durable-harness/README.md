@@ -20,30 +20,40 @@ another machine, and a tool call that isn't safe to repeat is never run twice.
 
 ## Quick start
 
-Install it with a harness, here Pi, in a Next.js app:
+Install it with a harness, here Pi with
+[pi-durable](https://www.npmjs.com/package/@earendil-works/pi-durable), in a
+Next.js app:
 
 ```bash
-npm install durable-harness @earendil-works/pi-agent-core @earendil-works/pi-ai just-bash
+npm install durable-harness @earendil-works/pi-durable @earendil-works/chord @earendil-works/pi-ai just-bash
 ```
 
-Define an agent. Agents are tool-less by default; one line gives Pi its own
-coding tools on a virtual workspace, whose files live in the session's log:
+Open Pi's own durable `Harness` on a World-backed storage. Agents are
+tool-less by default; Pi's coding tools go on a virtual workspace, whose files
+live in the session's log:
 
 ```ts
 // lib/agent.ts
-import { virtual } from 'durable-harness';
-import { createCodingTools, pi } from 'durable-harness/pi';
+import { BACKGROUND_CONTEXT as ctx } from '@earendil-works/chord/context';
+import { createRegistry, Harness, type Storage } from '@earendil-works/pi-durable';
+import { CodingTools, GATEWAY_PROVIDER, gatewayModels, resumeWith, virtualEnv } from 'durable-harness/pi-durable';
 
-export const agent = pi({ model: 'anthropic/claude-sonnet-4.5', tools: createCodingTools(virtual()) });
+const models = gatewayModels();
+const registry = createRegistry();
+registry.install(CodingTools);
+
+export const agent = { model: { provider: GATEWAY_PROVIDER, modelId: 'anthropic/claude-sonnet-4.5' } };
+export const open = resumeWith((storage: Storage) => Harness.open(storage, { models, registry, env: virtualEnv() }, ctx));
 ```
 
 Serve it from a chat route, and configure the integration:
 
 ```ts
 // app/api/chat/route.ts
-import { agent } from '@/lib/agent';
+import { chatRoute } from 'durable-harness/pi-durable';
+import { agent, open } from '@/lib/agent';
 
-export const { GET, POST } = agent.chatRoute({ authorize: async (request) => { /* your auth */ } });
+export const { GET, POST } = chatRoute({ open, agent, authorize: async (request) => { /* your auth */ } });
 ```
 
 ```ts
@@ -58,8 +68,8 @@ Choose your harness and framework in the
 
 ## Harnesses
 
-- [Pi](https://vercel.com/docs/agent-harnesses/pi): `durable-harness/pi`, and
-  `durable-harness/pi-durable` for apps built on Pi's own durable `Harness`.
+- [Pi](https://vercel.com/docs/agent-harnesses/pi): `durable-harness/pi-durable`
+  (recommended: Pi's own durable `Harness` on a World), or `durable-harness/pi`.
 - [OpenCode](https://vercel.com/docs/agent-harnesses/opencode):
   `durable-harness/opencode`.
 - [fx](https://vercel.com/docs/agent-harnesses/fx): `durable-harness/fx`,
