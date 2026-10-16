@@ -21,6 +21,34 @@ describe('compare foldItems', () => {
       { kind: 'text', text: 'done' },
     ]);
   });
+  it('drops the cut-off reply on restart, and keeps text the log kept', () => {
+    const fold = (events: object[]) => events.reduce<Item[]>((items, e) => foldItems(items, e), [{ kind: 'user', text: 'hi' }]);
+    const before = [{ type: 'text', delta: 'Sending it.' }, { type: 'tool_start', name: 'mail' }, { type: 'tool_end', name: 'mail' }, { type: 'text', delta: 'The email went' }];
+    expect(fold([...before, { type: 'restart', text: 'Sending it.', parts: ['Sending it.'] }, { type: 'text', delta: 'Done.' }])).toEqual([
+      { kind: 'user', text: 'hi' },
+      { kind: 'text', text: 'Sending it.' },
+      { kind: 'tool', name: 'mail', done: true, error: false },
+      { kind: 'text', text: 'Done.' },
+    ]);
+    // A crash mid-tool: nothing streamed was cut off.
+    const midTool = fold([{ type: 'text', delta: 'Sending it.' }, { type: 'tool_start', name: 'mail' }]);
+    expect(foldItems(midTool, { type: 'restart', text: 'Sending it.', parts: ['Sending it.'] })).toBe(midTool);
+    // A reply the log kept whole stays.
+    const kept = fold([{ type: 'text', delta: 'All done.' }]);
+    expect(foldItems(kept, { type: 'restart', text: 'All done.', parts: ['All done.'] })).toBe(kept);
+    // A cut-off reply that repeats text the log kept before the tool still goes: the count, not the words, tells them apart.
+    const repeat = fold([{ type: 'text', delta: 'Done.' }, { type: 'tool_start', name: 'mail' }, { type: 'tool_end', name: 'mail' }, { type: 'text', delta: 'Done.' }]);
+    expect(foldItems(repeat, { type: 'restart', text: 'Done.', parts: ['Done.'] })).toEqual(repeat.slice(0, -1));
+    // A steer joins the turn it steers: the text the log kept before it counts.
+    const steered = [...fold([{ type: 'text', delta: 'Sending it.' }]), { kind: 'user', text: 'and cc me', steer: true } as Item, { kind: 'text', text: 'The email went' } as Item];
+    expect(foldItems(steered, { type: 'restart', text: 'Sending it.', parts: ['Sending it.'] })).toEqual(steered.slice(0, -1));
+    // A steer mid-reply splits one kept reply into two rows: both stay.
+    const split = [...fold([{ type: 'text', delta: 'Sending' }]), { kind: 'user', text: 'and cc me', steer: true } as Item, { kind: 'text', text: ' it.' } as Item];
+    expect(foldItems(split, { type: 'restart', text: 'Sending it.', parts: ['Sending it.'] })).toBe(split);
+    // ...and a cut-off reply split by one goes as a whole, the steer kept.
+    const cut = [...fold([{ type: 'text', delta: 'Sending it.' }, { type: 'tool_start', name: 'mail' }, { type: 'tool_end', name: 'mail' }, { type: 'text', delta: 'The email' }]), { kind: 'user', text: 'and cc me', steer: true } as Item, { kind: 'text', text: ' went' } as Item];
+    expect(foldItems(cut, { type: 'restart', text: 'Sending it.', parts: ['Sending it.'] })).toEqual([...cut.slice(0, 3), cut[4]]);
+  });
   it('returns the same array for events that show nothing', () => {
     const items: Item[] = [];
     expect(foldItems(items, { type: 'mark', name: 'idle' })).toBe(items);
